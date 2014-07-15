@@ -167,14 +167,14 @@ DROP TABLE IF EXISTS `question`;
 CREATE TABLE `question` (
   `idQuestion` int(11) NOT NULL AUTO_INCREMENT,
   `text` varchar(400) DEFAULT NULL,
-  `answerOK` varchar(100) DEFAULT NULL,
-  `answerWrong1` varchar(100) DEFAULT NULL,
-  `answerWrong2` varchar(100) DEFAULT NULL,
-  `answerWrong3` varchar(100) DEFAULT NULL,
-  `answerWrong4` varchar(100) DEFAULT NULL,
-  `answerWrong5` varchar(100) DEFAULT NULL,
+  `answer1` varchar(100) DEFAULT NULL,
+  `answer2` varchar(100) DEFAULT NULL,
+  `answer3` varchar(100) DEFAULT NULL,
+  `answer4` varchar(100) DEFAULT NULL,
+  `answer5` varchar(100) DEFAULT NULL,
   `score` decimal(5,0) DEFAULT NULL,
   `bonus` int(11) DEFAULT NULL COMMENT 'indica si la pregunta es bonus o no',
+  `questioncol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idQuestion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='preguntas generales';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -199,11 +199,12 @@ CREATE TABLE `questionmatch` (
   `idQuestionMatch` int(11) NOT NULL AUTO_INCREMENT,
   `question` int(11) DEFAULT NULL,
   `match` int(11) DEFAULT NULL,
+  `answerOK` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idQuestionMatch`),
   KEY `questionFK_idx` (`question`),
   KEY `match_idx` (`match`),
-  CONSTRAINT `questionFK` FOREIGN KEY (`question`) REFERENCES `question` (`idQuestion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `match` FOREIGN KEY (`match`) REFERENCES `match` (`idMatch`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `match` FOREIGN KEY (`match`) REFERENCES `match` (`idMatch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `questionFK` FOREIGN KEY (`question`) REFERENCES `question` (`idQuestion`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='pregunta asignada a un partido';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -308,4 +309,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-15 16:47:19
+-- Dump completed on 2014-07-15 16:53:37
