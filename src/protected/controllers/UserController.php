@@ -170,4 +170,23 @@ class UserController extends Controller
 			Yii::app()->end();
 		}
 	}
+	/**
+	* funcion para enviar emails
+	*/
+	public static function sendMail($email,$id)
+    {   
+        $message            = new YiiMailMessage;
+           //this points to the file test.php inside the view path
+        $message->view = "test";
+        $sid                 = $id;
+        $criteria            = new CDbCriteria();
+        $criteria->condition = "id=".$sid."";            
+        $user          = Usuario::model()->findByPk($sid);        
+        $params              = array('usermail'=>$user);
+        $message->subject    = 'email test';
+        $message->setBody($params, 'text/html');                
+        $message->addTo($email);
+        $message->from = 'mail@mimail.com.ar';   
+        Yii::app()->mail->send($message);       
+    }
 }

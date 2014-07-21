@@ -106,4 +106,20 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+	/**
+	* funcion para activar correo
+	*/
+	public function actionActivatemail($id,$verificationcode)
+    { 
+		$key = 525325.24;
+			
+		//$decrypt=base64_decode($verificationcode);
+
+		$decrypt=$verificationcode / $key; 
+		
+		$model=User::model()->findByPk($id);
+		$model->activo = 1;
+		if($model->save())
+				$this->redirect(array('user/login','id'=>$model->id));		
+	}
 }
