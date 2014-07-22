@@ -87,7 +87,7 @@
 		<!-- footer -->
 
 	</div><!-- main container -->
-
+	<?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap/js/bootstrap.min.js"></script>
 </body>

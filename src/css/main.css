@@ -1,9 +1,24 @@
 @CHARSET "ISO-8859-1";
+
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .navbar {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.grid-view .button-column {
+	width: 80px;
+}
+
+.grid-view .summary {
+	margin: 0 0 5px;
+	text-align: right;
+}
+
+.grid-view .filters input,.grid-view .filters select {
+	border: 1px solid #ccc;
+	width: 100%;
 }

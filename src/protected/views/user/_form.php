@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'user-form',
@@ -19,64 +19,63 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'lastname'); ?>
-		<?php echo $form->textField($model,'lastname',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'lastname',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'lastname'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'born'); ?>
-		<?php echo $form->textField($model,'born'); ?>
+		<?php echo $form->textField($model,'born', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'born'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>200, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'state'); ?>
-		<?php echo $form->textField($model,'state',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'state',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'state'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'city'); ?>
-		<?php echo $form->textField($model,'city',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'city',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'city'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'nickname'); ?>
-		<?php echo $form->textField($model,'nickname',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'nickname',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'nickname'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'score'); ?>
-		<?php echo $form->textField($model,'score'); ?>
+		<?php echo $form->textField($model,'score', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'score'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'male'); ?>
-		<?php echo $form->textField($model,'male',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'male',array('size'=>1,'maxlength'=>1, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'male'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="form-group">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-default')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->

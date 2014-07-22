@@ -4,8 +4,6 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
-
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'match-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -19,52 +17,51 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'localTeam'); ?>
-		<?php echo $form->textField($model,'localTeam'); ?>
+		<?php echo $form->textField($model,'localTeam', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'localTeam'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'visitantTeam'); ?>
-		<?php echo $form->textField($model,'visitantTeam'); ?>
+		<?php echo $form->textField($model,'visitantTeam', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'visitantTeam'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'date'); ?>
-		<?php echo $form->textField($model,'date'); ?>
+		<?php echo $form->textField($model,'date', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'date'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'afaDate'); ?>
-		<?php echo $form->textField($model,'afaDate'); ?>
+		<?php echo $form->textField($model,'afaDate', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'afaDate'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'place'); ?>
-		<?php echo $form->textField($model,'place',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'place',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'place'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'localGoals'); ?>
-		<?php echo $form->textField($model,'localGoals'); ?>
+		<?php echo $form->textField($model,'localGoals', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'localGoals'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'visitantGoals'); ?>
-		<?php echo $form->textField($model,'visitantGoals'); ?>
+		<?php echo $form->textField($model,'visitantGoals', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'visitantGoals'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="form-group">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-default')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->

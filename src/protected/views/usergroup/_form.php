@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
+
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'usergroup-form',
@@ -19,28 +19,27 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'user'); ?>
-		<?php echo $form->textField($model,'user'); ?>
+		<?php echo $form->textField($model,'user', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'user'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'group'); ?>
-		<?php echo $form->textField($model,'group'); ?>
+		<?php echo $form->textField($model,'group', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'group'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'score'); ?>
-		<?php echo $form->textField($model,'score',array('size'=>15,'maxlength'=>15)); ?>
+		<?php echo $form->textField($model,'score',array('size'=>15,'maxlength'=>15, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'score'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="form-group">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-default')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->

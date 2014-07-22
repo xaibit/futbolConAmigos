@@ -74,6 +74,35 @@ return array(
 				*/
 			),
 		),
+		'widgetFactory' => array(
+				'widgets' => array(
+						'CLinkPager' => array(
+								'header' => '',
+								'footer' => '',
+								'nextPageLabel' => '>>',
+								'prevPageLabel' => '<<',
+								'selectedPageCssClass' => 'active',
+								'hiddenPageCssClass' => 'disabled',
+								'htmlOptions' => array(
+										'class' => 'pagination'
+								),
+								'internalPageCssClass'=>''
+						),
+						'CListView'=>array(
+								'itemsCssClass'=>'list-group',
+								'summaryText'=>'Mostrando {start} - {end} de {count}',
+								'emptyText'=>'No se encontraron resultados',
+								'pagerCssClass'=>'pagination'
+						),
+						'CGridView'=>array(
+								'itemsCssClass'=>'table table-striped table-bordered',
+								'summaryText'=>'Mostrando {start} - {end} de {count}',
+								'emptyText'=>'No se encontraron resultados',
+								'pagerCssClass'=>'pagination',
+								'cssFile'=>false
+						)
+				)
+		)
 	),
 
 	// application-level parameters that can be accessed
