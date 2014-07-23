@@ -1,0 +1,24 @@
+ALTER TABLE `user` CHANGE COLUMN `email` `email` VARCHAR(200) NULL  , ADD COLUMN `password` VARCHAR(100) NOT NULL  AFTER `male` , ADD COLUMN `dni` VARCHAR(15) NULL  AFTER `password` 
+, ADD UNIQUE INDEX `dni_UNIQUE` (`dni` ASC) ;
+
+
+UPDATE team SET image = 'Arsenal.png' WHERE idTeam = 1;
+UPDATE team SET image = 'AtleticoRafaela.png' WHERE idTeam = 2;
+UPDATE team SET image = 'Banfield.png' WHERE idTeam = 3;
+UPDATE team SET image = 'Belgrano.png' WHERE idTeam = 4;
+UPDATE team SET image = 'Boca.png' WHERE idTeam = 5;
+UPDATE team SET image = 'DefensayJusticia.png' WHERE idTeam = 6;
+UPDATE team SET image = 'Estudiantes.png' WHERE idTeam = 7;
+UPDATE team SET image = 'GimnasiayEsgrimaLP.png' WHERE idTeam = 8;
+UPDATE team SET image = 'GodoyCruz.png' WHERE idTeam = 9;
+UPDATE team SET image = 'Independiente.png' WHERE idTeam = 10;
+UPDATE team SET image = 'Lanus.png' WHERE idTeam = 11;
+UPDATE team SET image = 'Newells.png' WHERE idTeam = 12;
+UPDATE team SET image = 'Olimpo.png' WHERE idTeam = 13;
+UPDATE team SET image = 'Quilmes.png' WHERE idTeam = 14;
+UPDATE team SET image = 'Racing.png' WHERE idTeam = 15;
+UPDATE team SET image = 'River.png' WHERE idTeam = 16;
+UPDATE team SET image = 'RosarioCentral.png' WHERE idTeam = 17;
+UPDATE team SET image = 'SanLorenzo.png' WHERE idTeam = 18;
+UPDATE team SET image = 'Tigre.png' WHERE idTeam = 19;
+UPDATE team SET image = 'Velez.png' WHERE idTeam = 20;
