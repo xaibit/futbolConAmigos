@@ -29,6 +29,7 @@ return array(
 		),
 		
 	),
+	'language'=>'es',
 
 	// application components
 	'components'=>array(
@@ -73,6 +74,9 @@ return array(
 				),
 				*/
 			),
+		),		
+		'coreMessages'=>array(
+				'basePath'=>null
 		),
 		'widgetFactory' => array(
 				'widgets' => array(

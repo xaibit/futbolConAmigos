@@ -23,8 +23,8 @@
  * @property string $predictioncol
  *
  * The followings are the available model relations:
- * @property Match $match0
- * @property User $user0
+ * @property Match $match
+ * @property User $user
  * @property Question $question10
  * @property Question $question20
  * @property Question $question30
@@ -68,11 +68,11 @@ class Prediction extends CActiveRecord
 		return array(
 			'match' => array(self::BELONGS_TO, 'Match', 'match'),
 			'user' => array(self::BELONGS_TO, 'User', 'user'),
-			'question1' => array(self::BELONGS_TO, 'Question', 'question1'),
-			'question2' => array(self::BELONGS_TO, 'Question', 'question2'),
-			'question3' => array(self::BELONGS_TO, 'Question', 'question3'),
-			'question4' => array(self::BELONGS_TO, 'Question', 'question4'),
-			'question5' => array(self::BELONGS_TO, 'Question', 'question5'),
+			'question10' => array(self::BELONGS_TO, 'Question', 'question1'),
+			'question20' => array(self::BELONGS_TO, 'Question', 'question2'),
+			'question30' => array(self::BELONGS_TO, 'Question', 'question3'),
+			'question40' => array(self::BELONGS_TO, 'Question', 'question4'),
+			'question50' => array(self::BELONGS_TO, 'Question', 'question5'),
 		);
 	}
 

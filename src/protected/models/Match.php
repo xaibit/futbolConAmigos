@@ -12,8 +12,10 @@
  * @property string $place
  * @property integer $localGoals
  * @property integer $visitantGoals
+ * @property integer $competition
  *
  * The followings are the available model relations:
+ * @property Competition $competition0
  * @property Team $localTeam0
  * @property Team $visitantTeam0
  * @property Prediction[] $predictions
@@ -38,12 +40,12 @@ class Match extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('localTeam, visitantTeam, afaDate, localGoals, visitantGoals', 'numerical', 'integerOnly'=>true),
+			array('localTeam, visitantTeam, afaDate, localGoals, visitantGoals, competition', 'numerical', 'integerOnly'=>true),
 			array('place', 'length', 'max'=>100),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idMatch, localTeam, visitantTeam, date, afaDate, place, localGoals, visitantGoals', 'safe', 'on'=>'search'),
+			array('idMatch, localTeam, visitantTeam, date, afaDate, place, localGoals, visitantGoals, competition', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,11 +57,12 @@ class Match extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'localTeam' => array(self::BELONGS_TO, 'Team', 'localTeam'),
-			'visitantTeam' => array(self::BELONGS_TO, 'Team', 'visitantTeam'),
+			'localTeam0' => array(self::BELONGS_TO, 'Team', 'localTeam'),
+			'visitantTeam0' => array(self::BELONGS_TO, 'Team', 'visitantTeam'),
 			'predictions' => array(self::HAS_MANY, 'Prediction', 'match'),
 			'questions' => array(self::HAS_MANY, 'Question', 'match'),
 			'questionmatches' => array(self::HAS_MANY, 'Questionmatch', 'match'),
+			'competition' => array(self::BELONGS_TO, 'Competition', 'competition'),
 		);
 	}
 
@@ -106,6 +109,7 @@ class Match extends CActiveRecord
 		$criteria->compare('place',$this->place,true);
 		$criteria->compare('localGoals',$this->localGoals);
 		$criteria->compare('visitantGoals',$this->visitantGoals);
+		$criteria->compare('competition',$this->competition);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

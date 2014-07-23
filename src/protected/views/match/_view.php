@@ -3,41 +3,7 @@
 /* @var $data Match */
 ?>
 
-<div class="view">
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('idMatch')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->idMatch), array('view', 'id'=>$data->idMatch)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('localTeam')); ?>:</b>
-	<?php echo CHtml::encode($data->localTeam); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('visitantTeam')); ?>:</b>
-	<?php echo CHtml::encode($data->visitantTeam); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('date')); ?>:</b>
-	<?php echo CHtml::encode($data->date); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('afaDate')); ?>:</b>
-	<?php echo CHtml::encode($data->afaDate); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('place')); ?>:</b>
-	<?php echo CHtml::encode($data->place); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('localGoals')); ?>:</b>
-	<?php echo CHtml::encode($data->localGoals); ?>
-	<br />
-
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('visitantGoals')); ?>:</b>
-	<?php echo CHtml::encode($data->visitantGoals); ?>
-	<br />
-
-	*/ ?>
-
-</div>
+<?php echo CHtml::link('<h4 class="list-group-item-heading">' 
+		. $data->localTeam0->name . ' | ' . $data->visitantTeam0->name . '</h4>'
+		. '<p class="list-group-item-text">' . date('d/m/Y', strtotime($data->date))
+		. ' - ' . $data->afaDate . '&#170; Fecha<span class="glyphicon glyphicon-chevron-right pull-right"></span></p>', array('prediction/create', 'id'=>$data->idMatch), array('class'=>'list-group-item')); ?>
