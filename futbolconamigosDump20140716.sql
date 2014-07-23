@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `futbolconamigos` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `futbolconamigos`;
+CREATE DATABASE  IF NOT EXISTS `u841882630_1` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `u841882630_1`;
 -- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
 --
--- Host: localhost    Database: futbolconamigos
+-- Host: localhost    Database: u841882630_1
 -- ------------------------------------------------------
 -- Server version	5.5.25a
 
