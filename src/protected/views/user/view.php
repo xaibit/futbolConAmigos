@@ -31,5 +31,7 @@ $this->menu=array(
 		'nickname',
 		'score',
 		'male',
+		'password',
+		'dni',
 	),
 )); ?>

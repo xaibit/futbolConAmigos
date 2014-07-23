@@ -46,6 +46,14 @@
 	<?php echo CHtml::encode($data->male); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('password')); ?>:</b>
+	<?php echo CHtml::encode($data->password); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('dni')); ?>:</b>
+	<?php echo CHtml::encode($data->dni); ?>
+	<br />
+
 	*/ ?>
 
 </div>

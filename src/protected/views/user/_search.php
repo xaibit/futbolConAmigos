@@ -60,6 +60,12 @@
 		<?php echo $form->label($model,'male'); ?>
 		<?php echo $form->textField($model,'male',array('size'=>1,'maxlength'=>1, 'class'=>'form-control')); ?>
 	</div>
+	
+	<div class="form-group">
+		<?php echo $form->label($model,'dni'); ?>
+		<?php echo $form->textField($model,'dni',array('size'=>15,'maxlength'=>15, 'class'=>'form-control')); ?>
+	</div>
+	
 
 	<div class="form-group">
 		<?php echo CHtml::submitButton('Search', array('class'=>'btn btn-default')); ?>

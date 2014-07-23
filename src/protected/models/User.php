@@ -14,6 +14,8 @@
  * @property string $nickname
  * @property integer $score
  * @property string $male
+ * @property string $password
+ * @property string $dni
  *
  * The followings are the available model relations:
  * @property Group[] $groups
@@ -39,13 +41,15 @@ class User extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('score', 'numerical', 'integerOnly'=>true),
-			array('name, lastname, state, city, nickname', 'length', 'max'=>100),
+			array('name, lastname, state, city, nickname, password', 'length', 'max'=>100),
 			array('email', 'length', 'max'=>200),
 			array('male', 'length', 'max'=>1),
+			array('password', 'required'),
 			array('born', 'safe'),
+			array('dni', 'length', 'max'=>15),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idUser, name, lastname, born, email, state, city, nickname, score, male', 'safe', 'on'=>'search'),
+			array('idUser, name, lastname, born, email, state, city, nickname, score, male, password, dni', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -80,6 +84,8 @@ class User extends CActiveRecord
 			'nickname' => 'Usuario',
 			'score' => 'Puntos',
 			'male' => 'Sexo',
+			'password' => 'Contrase&ntilde;a',
+			'dni' => 'DNI',
 		);
 	}
 
@@ -111,6 +117,8 @@ class User extends CActiveRecord
 		$criteria->compare('nickname',$this->nickname,true);
 		$criteria->compare('score',$this->score);
 		$criteria->compare('male',$this->male,true);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('dni',$this->dni,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
