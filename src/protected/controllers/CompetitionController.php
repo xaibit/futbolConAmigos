@@ -1,6 +1,6 @@
 <?php
 
-class PredictionController extends Controller
+class CompetitionController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -32,13 +32,13 @@ class PredictionController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'admin', 'delete'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
-			/*array('allow', // allow admin user to perform 'admin' and 'delete' actions
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
-			),*/
+			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -60,31 +60,22 @@ class PredictionController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($id)
+	public function actionCreate()
 	{
-		$model=new Prediction;
-		$model->match = $id;
-		$model->user = Yii::app()->user->id;
-		$match = Match::model()->findByPk($id);
-		$questions = $match->questions;
-		$model->question1 = isset($questions[0]) ? $questions[0]->idQuestion : null;
-		$model->question2 = isset($questions[1]) ? $questions[1]->idQuestion : null;
-		$model->question3 = isset($questions[2]) ? $questions[2]->idQuestion : null;
-		$model->question4 = isset($questions[3]) ? $questions[3]->idQuestion : null;
-		$model->question5 = isset($questions[4]) ? $questions[4]->idQuestion : null;
+		$model=new Competition;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Prediction']))
+		if(isset($_POST['Competition']))
 		{
-			$model->attributes=$_POST['Prediction'];
+			$model->attributes=$_POST['Competition'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idPrediction));
+				$this->redirect(array('view','id'=>$model->idCompetition));
 		}
 
 		$this->render('create',array(
-			'model'=>$model
+			'model'=>$model,
 		));
 	}
 
@@ -100,11 +91,11 @@ class PredictionController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Prediction']))
+		if(isset($_POST['Competition']))
 		{
-			$model->attributes=$_POST['Prediction'];
+			$model->attributes=$_POST['Competition'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idPrediction));
+				$this->redirect(array('view','id'=>$model->idCompetition));
 		}
 
 		$this->render('update',array(
@@ -131,7 +122,7 @@ class PredictionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Prediction');
+		$dataProvider=new CActiveDataProvider('Competition');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -142,10 +133,10 @@ class PredictionController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Prediction('search');
+		$model=new Competition('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Prediction']))
-			$model->attributes=$_GET['Prediction'];
+		if(isset($_GET['Competition']))
+			$model->attributes=$_GET['Competition'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -156,12 +147,12 @@ class PredictionController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Prediction the loaded model
+	 * @return Competition the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Prediction::model()->findByPk($id);
+		$model=Competition::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -169,11 +160,11 @@ class PredictionController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Prediction $model the model to be validated
+	 * @param Competition $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='prediction-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='competition-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

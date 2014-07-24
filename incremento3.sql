@@ -1,0 +1,1 @@
+UPDATE team SET image = 'GodoyCruz.jpg' WHERE idTeam = 9;

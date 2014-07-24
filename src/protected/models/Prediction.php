@@ -23,13 +23,13 @@
  * @property string $predictioncol
  *
  * The followings are the available model relations:
- * @property Match $match
+ * @property Match $matchRel
  * @property User $user
- * @property Question $question10
- * @property Question $question20
- * @property Question $question30
- * @property Question $question40
- * @property Question $question50
+ * @property Question $ques1
+ * @property Question $ques2
+ * @property Question $ques3
+ * @property Question $ques4
+ * @property Question $ques5
  */
 class Prediction extends CActiveRecord
 {
@@ -66,13 +66,13 @@ class Prediction extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'match' => array(self::BELONGS_TO, 'Match', 'match'),
+			'matchRel' => array(self::BELONGS_TO, 'Match', 'match'),
 			'user' => array(self::BELONGS_TO, 'User', 'user'),
-			'question10' => array(self::BELONGS_TO, 'Question', 'question1'),
-			'question20' => array(self::BELONGS_TO, 'Question', 'question2'),
-			'question30' => array(self::BELONGS_TO, 'Question', 'question3'),
-			'question40' => array(self::BELONGS_TO, 'Question', 'question4'),
-			'question50' => array(self::BELONGS_TO, 'Question', 'question5'),
+			'ques1' => array(self::BELONGS_TO, 'Question', 'question1'),
+			'ques2' => array(self::BELONGS_TO, 'Question', 'question2'),
+			'ques3' => array(self::BELONGS_TO, 'Question', 'question3'),
+			'ques4' => array(self::BELONGS_TO, 'Question', 'question4'),
+			'ques5' => array(self::BELONGS_TO, 'Question', 'question5'),
 		);
 	}
 
