@@ -12,6 +12,7 @@
 	<link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 		
 	<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" rel="stylesheet" type="text/css">
+	<!--<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,14 +45,14 @@
 					$this->widget('zii.widgets.CMenu',array(
 						'items'=>array(
 							array('label'=>'Home', 'url'=>array('/site/index')),
-							array('label'=>'Usuarios', 'url'=>array('/user/index'), 'visible'=>!Yii::app()->user->isGuest),
+							/*array('label'=>'Usuarios', 'url'=>array('/user/index'), 'visible'=>!Yii::app()->user->isGuest),*/
 							array('label'=>'Grupos', 'url'=>array('/group/index'), 'visible'=>!Yii::app()->user->isGuest),
 							array('label'=>'Partidos', 'url'=>array('/match/index'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'Preguntas', 'url'=>array('/question/index'), 'visible'=>!Yii::app()->user->isGuest),
+							/*array('label'=>'Preguntas', 'url'=>array('/question/index'), 'visible'=>!Yii::app()->user->isGuest),*/
 							array('label'=>'Predicciones', 'url'=>array('/prediction/index'), 'visible'=>!Yii::app()->user->isGuest),
 							array('label'=>'Equipos', 'url'=>array('/team/index'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'Jugadores', 'url'=>array('/player/index'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'Usuario-Grupo', 'url'=>array('/usergroup/index'), 'visible'=>!Yii::app()->user->isGuest),
+							/*array('label'=>'Jugadores', 'url'=>array('/player/index'), 'visible'=>!Yii::app()->user->isGuest),
+							array('label'=>'Usuario-Grupo', 'url'=>array('/usergroup/index'), 'visible'=>!Yii::app()->user->isGuest),*/
 							array('label'=>'Competicion', 'url'=>array('/competition/index'), 'visible'=>!Yii::app()->user->isGuest),
 							array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about'), 'visible'=>Yii::app()->user->isGuest),
 							array('label'=>'Contact', 'url'=>array('/site/contact'), 'visible'=>Yii::app()->user->isGuest),
