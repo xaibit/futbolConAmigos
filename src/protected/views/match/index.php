@@ -12,7 +12,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Matches</h1>
+<div class="page-header"><h1>Partidos</h1></div>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

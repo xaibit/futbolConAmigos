@@ -12,9 +12,7 @@
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
+	
 	<?php echo $form->errorSummary($model); ?>
 	<div class="row">
 		<div class="col-xs-1 col-md-1">
@@ -34,7 +32,7 @@
 	</div>
 	
 	<?php echo $form->hiddenField($model,'score'); ?>
-	<?php if (isset($model->question1)){ ?>	
+	<?php if (isset($model->question1)) { ?>	
 	<div class="form-group">
 		<p class="form-control-static">
 			<strong><?php echo $model->ques1->text; ?></strong>
@@ -165,13 +163,7 @@
 	<?php }//end if question setted ?>
 	
 	<?php echo $form->hiddenField($model,'user'); ?>	
-	<?php echo $form->hiddenField($model,'match'); ?>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'predictioncol'); ?>
-		<?php echo $form->textField($model,'predictioncol',array('size'=>45,'maxlength'=>45, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'predictioncol'); ?>
-	</div>
+	<?php echo $form->hiddenField($model,'match'); ?>	
 
 	<div class="form-group">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', array('class'=>'btn btn-default')); ?>
