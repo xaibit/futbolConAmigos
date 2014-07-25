@@ -8,6 +8,8 @@
  * @property integer $user
  * @property integer $group
  * @property string $score
+ * @property integer $adminPending
+ * @property integer $userPending
  *
  * The followings are the available model relations:
  * @property User $user0
@@ -31,11 +33,11 @@ class Usergroup extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user, group', 'numerical', 'integerOnly'=>true),
+			array('user, group, adminPending, userPending', 'numerical', 'integerOnly'=>true),
 			array('score', 'length', 'max'=>15),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idUserGroup, user, group, score', 'safe', 'on'=>'search'),
+			array('idUserGroup, user, group, score, adminPending, userPending', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,6 +64,8 @@ class Usergroup extends CActiveRecord
 			'user' => 'Usuario',
 			'group' => 'Grupo',
 			'score' => 'Puntos',
+			'adminPending' => 'Pendiente Aprobaci&oacute;n Administrador',
+			'adminPending' => 'Pendiente Aprobaci&oacute;n Usuario'
 		);
 	}
 
@@ -87,6 +91,9 @@ class Usergroup extends CActiveRecord
 		$criteria->compare('user',$this->user);
 		$criteria->compare('group',$this->group);
 		$criteria->compare('score',$this->score,true);
+		$criteria->compare('adminPending',$this->adminPending);
+		$criteria->compare('userPending',$this->userPending);
+		
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -13,6 +13,7 @@
  * @property integer $localGoals
  * @property integer $visitantGoals
  * @property integer $competition
+ * @property string $instance
  *
  * The followings are the available model relations:
  * @property Competition $competition0
@@ -41,11 +42,11 @@ class Match extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('localTeam, visitantTeam, afaDate, localGoals, visitantGoals, competition', 'numerical', 'integerOnly'=>true),
-			array('place', 'length', 'max'=>100),
+			array('place, instance', 'length', 'max'=>100),
 			array('date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idMatch, localTeam, visitantTeam, date, afaDate, place, localGoals, visitantGoals, competition', 'safe', 'on'=>'search'),
+			array('idMatch, localTeam, visitantTeam, date, afaDate, place, localGoals, visitantGoals, competition, instance', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,11 +76,13 @@ class Match extends CActiveRecord
 			'idMatch' => 'Id Match',
 			'localTeam' => 'Local',
 			'visitantTeam' => 'Visitante',
-			'date' => 'Dia',
+			'date' => 'D&iacute;a',
 			'afaDate' => 'Fecha',
 			'place' => 'Lugar',
 			'localGoals' => 'Goles Local',
 			'visitantGoals' => 'Goles Visitante',
+			'competition' => 'Competici&oacute;n',
+			'instance' => 'Instancia'
 		);
 	}
 
@@ -110,6 +113,7 @@ class Match extends CActiveRecord
 		$criteria->compare('localGoals',$this->localGoals);
 		$criteria->compare('visitantGoals',$this->visitantGoals);
 		$criteria->compare('competition',$this->competition);
+		$criteria->compare('instance',$this->instance,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

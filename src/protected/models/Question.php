@@ -136,4 +136,15 @@ class Question extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function getOption($index)
+	{
+		switch ($index) {
+			case 0: return $this->answer1; break;
+			case 1: return $this->answer2; break;
+			case 2: return $this->answer3; break;
+			case 3: return $this->answer4; break;
+			case 4: return $this->answer5; break;
+		}
+	}
 }

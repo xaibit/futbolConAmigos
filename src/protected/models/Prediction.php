@@ -21,6 +21,8 @@
  * @property integer $user
  * @property integer $match
  * @property string $predictioncol
+ * @property string $create
+ * @property string $update
  *
  * The followings are the available model relations:
  * @property Match $matchRel
@@ -52,9 +54,10 @@ class Prediction extends CActiveRecord
 			array('localGoals, visitantGoals, question1, answer1, question2, answer2, question3, answer3, question4, answer4, question5, answer5, user, match', 'numerical', 'integerOnly'=>true),
 			array('score', 'length', 'max'=>15),
 			array('predictioncol', 'length', 'max'=>45),
+			array('create, update', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idPrediction, localGoals, visitantGoals, score, question1, answer1, question2, answer2, question3, answer3, question4, answer4, question5, answer5, user, match, predictioncol', 'safe', 'on'=>'search'),
+			array('idPrediction, localGoals, visitantGoals, score, question1, answer1, question2, answer2, question3, answer3, question4, answer4, question5, answer5, user, match, predictioncol, create, update', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -99,6 +102,8 @@ class Prediction extends CActiveRecord
 			'user' => 'Usuario',
 			'match' => 'Partido',
 			'predictioncol' => 'Predictioncol',
+			'create' => 'Fecha Creaci&oacute;n',
+			'update' => 'Fecha Actualizaci&oacute;n',
 		);
 	}
 
@@ -137,6 +142,8 @@ class Prediction extends CActiveRecord
 		$criteria->compare('user',$this->user);
 		$criteria->compare('match',$this->match);
 		$criteria->compare('predictioncol',$this->predictioncol,true);
+		$criteria->compare('create',$this->create,true);
+		$criteria->compare('update',$this->update,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -153,4 +160,15 @@ class Prediction extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function getSelectedOption($index)
+	{
+		switch ($index) {
+			case 0: return $this->answer1; break;
+			case 1: return $this->answer2; break;
+			case 2: return $this->answer3; break;
+			case 3: return $this->answer4; break;
+			case 4: return $this->answer5; break;				
+		}
+	}	
 }

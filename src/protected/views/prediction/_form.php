@@ -28,134 +28,141 @@
 			<img width="30" height="30" src="<?php echo Yii::app()->request->baseUrl . '/images/escudos/' . $model->matchRel->visitantTeam0->image; ?>" alt="">
 		</div>
 		<div class="col-xs-5 col-md-1">
-			<img width="30" height="30" alt="" src="">
 			<?php echo $form->numberField($model,'visitantGoals', array('class'=>'form-control', 'min'=>0, 'max'=>'15')); ?>
 			<?php echo $form->error($model,'visitantGoals'); ?>
 		</div>			
 	</div>
 	
 	<?php echo $form->hiddenField($model,'score'); ?>
-		
+	<?php if (isset($model->question1)){ ?>	
 	<div class="form-group">
 		<p class="form-control-static">
-			<?php 
-				echo (isset($model->ques1)) ? $model->ques1->text : 'Pregunta 1';
-			?>
+			<strong><?php echo $model->ques1->text; ?></strong>
 		</p>		
 	</div>
 
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
-		<label class="btn btn-default <?php echo ($model->answer1 != null && $model->answer1 == 0) ? 'active' : ''; ?>">
-			<?php
-				$option11 = ($model->ques1 != null) ? $model->ques1->answer1 : 'Opcion 1';
+		<?php		
+			for ($i = 0; $i < 5; $i++):			
+				$selected = $model->getSelectedOption($i);
+				$option = $model->ques1->getOption($i);
 				
-				echo $form->radioButton($model,'answer1', array('value'=>0, 'uncheckValue'=>null)) . $option11; 
-			?>
-		</label>
-		<label class="btn btn-default <?php echo ($model->answer1 == 1) ? 'active' : ''; ?>">
-			<?php 
-				$option12 = ($model->ques1 != null) ? $model->ques1->answer2 : 'Opcion 2';
-				echo $form->radioButton($model,'answer1', array('value'=>1, 'uncheckValue'=>null)) . $option12; 
-			?>
-		</label>		
+				if (isset($option)):?>
+					<label class="btn btn-default 
+					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
+					<?php echo $form->radioButton($model,'answer' . ($i + 1), 
+							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
+					</label>
+				<?php endif;
+			endfor;		 
+		?>
 		<?php echo $form->error($model,'answer1'); ?>
 	</div>
-
+	<?php }//end if question setted ?>
+	
+	<?php if (isset($model->question2)) { ?>
 	<div class="form-group">
 		<p class="form-control-static">
-			<?php 
-				echo (isset($model->ques2)) ? $model->ques2->text : 'Pregunta 2';
-			?>
+			<strong><?php echo $model->ques2->text; ?></strong>
 		</p>		
 	</div>
 
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
-		<label class="btn btn-default <?php echo ($model->answer2 != null && $model->answer2 == 0) ? 'active' : ''; ?>">
-			<?php 
-				$option21 = ($model->ques2 != null) ? $model->ques2->answer1 : 'Opcion 1';
-				echo $form->radioButton($model,'answer2', array('value'=>0, 'uncheckValue'=>null)) . $option21; 
-			?>
-		</label>
-		<label class="btn btn-default <?php echo ($model->answer2 == 1) ? 'active' : ''; ?>">
-			<?php 
-				$option22 = ($model->ques2 != null) ? $model->ques2->answer2 : 'Opcion 2';
-				echo $form->radioButton($model,'answer2', array('value'=>1, 'uncheckValue'=>null)) . $option22; 
-			?>
-		</label>		
+		<?php		
+			for ($i = 0; $i < 5; $i++):			
+				$selected = $model->getSelectedOption($i);
+				$option = $model->ques2->getOption($i);
+				
+				if (isset($option)):?>
+					<label class="btn btn-default 
+					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
+					<?php echo $form->radioButton($model,'answer' . ($i + 1), 
+							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
+					</label>
+				<?php endif;
+			endfor;		 
+		?>	
 		<?php echo $form->error($model,'answer2'); ?>
 	</div>
-
+	<?php }//end if question setted ?>
+	
+	<?php if (isset($model->question3)) { ?>
 	<div class="form-group">
 		<p class="form-control-static">
-			<?php 
-				echo (isset($model->ques3)) ? $model->ques3->text : 'Pregunta 3';
-			?>
+			<strong><?php echo $model->ques3->text; ?></strong>
 		</p>		
 	</div>
 	
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
-		<label class="btn btn-default <?php echo ($model->answer3 != null && $model->answer3 == 0) ? 'active' : ''; ?>">
-			<?php 
-				$option31 = ($model->ques3 != null) ? $model->ques3->answer1 : 'Opcion 1';
-				echo $form->radioButton($model,'answer3', array('value'=>0, 'uncheckValue'=>null)) . $option31; 
-			?>
-		</label>
-		<label class="btn btn-default <?php echo ($model->answer3 == 1) ? 'active' : ''; ?>">
-			<?php 
-				$option32 = ($model->ques3 != null) ? $model->ques3->answer2 : 'Opcion 2';
-				echo $form->radioButton($model,'answer3', array('value'=>1, 'uncheckValue'=>null)) . $option32; 
-			?>
-		</label>		
+		<?php		
+			for ($i = 0; $i < 5; $i++):			
+				$selected = $model->getSelectedOption($i);
+				$option = $model->ques3->getOption($i);
+				
+				if (isset($option)):?>
+					<label class="btn btn-default 
+					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
+					<?php echo $form->radioButton($model,'answer' . ($i + 1), 
+							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
+					</label>
+				<?php endif;
+			endfor;		 
+		?>	
 		<?php echo $form->error($model,'answer3'); ?>
 	</div>
-
+	<?php }//end if question setted ?>
+	
+	<?php if (isset($model->question4)) { ?>
 	<div class="form-group">
 		<p class="form-control-static">
-			<?php 
-				echo (isset($model->ques4)) ? $model->ques4->text : 'Pregunta 4';
-			?>
+			<strong><?php echo $model->ques4->text; ?></strong>
 		</p>		
 	</div>
 
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
-		<label class="btn btn-default <?php echo ($model->answer4 != null && $model->answer4 == 0) ? 'active' : ''; ?>">
-			<?php 
-				$option41 = ($model->ques4 != null) ? $model->ques4->answer1 : 'Opcion 1';
-				echo $form->radioButton($model,'answer4', array('value'=>0, 'uncheckValue'=>null)) . $option41; 
-			?>
-		</label>
-		<label class="btn btn-default <?php echo ($model->answer4 == 1) ? 'active' : ''; ?>">
-			<?php 
-				$option42 = ($model->ques4 != null) ? $model->ques4->answer2 : 'Opcion 2';
-				echo $form->radioButton($model,'answer4', array('value'=>1, 'uncheckValue'=>null)) . $option42; 
-			?>
-		</label>		
+		<?php		
+			for ($i = 0; $i < 5; $i++):			
+				$selected = $model->getSelectedOption($i);
+				$option = $model->ques4->getOption($i);
+				
+				if (isset($option)):?>
+					<label class="btn btn-default 
+					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
+					<?php echo $form->radioButton($model,'answer' . ($i + 1), 
+							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
+					</label>
+				<?php endif;
+			endfor;		 
+		?>		
 		<?php echo $form->error($model,'answer4'); ?>
 	</div>
-
+	<?php }//end if question setted ?>
+	
+	<?php if (isset($model->question5)) { ?>
 	<div class="form-group">
 		<p class="form-control-static">
-			<?php 
-				echo (isset($model->ques5)) ? $model->ques5->text : 'Pregunta 5';
-			?>
+			<strong><?php echo $model->ques5->text; ?></strong>
 		</p>		
 	</div>
 
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
-		<label class="btn btn-default <?php echo ($model->answer5 != null && $model->answer5 == 0) ? 'active' : ''; ?>">
-			<?php 
-				$option51 = ($model->ques5 != null) ? $model->ques5->answer1 : 'Opcion 1';
-				echo $form->radioButton($model,'answer5', array('value'=>0, 'uncheckValue'=>null)) . $option51; 
-			?>
-		</label>
-		<label class="btn btn-default <?php echo ($model->answer5 == 1) ? 'active' : ''; ?>">
-			<?php 
-				$option52 = ($model->ques5 != null) ? $model->ques5->answer2 : 'Opcion 2';
-				echo $form->radioButton($model,'answer5', array('value'=>1, 'uncheckValue'=>null)) . $option52; 
-			?>
-		</label>		
+		<?php		
+			for ($i = 0; $i < 5; $i++):			
+				$selected = $model->getSelectedOption($i);
+				$option = $model->ques5->getOption($i);
+				
+				if (isset($option)):?>
+					<label class="btn btn-default 
+					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
+					<?php echo $form->radioButton($model,'answer' . ($i + 1), 
+							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
+					</label>
+				<?php endif;
+			endfor;		 
+		?>	
 		<?php echo $form->error($model,'answer5'); ?>
 	</div>
+	<?php }//end if question setted ?>
 	
 	<?php echo $form->hiddenField($model,'user'); ?>	
 	<?php echo $form->hiddenField($model,'match'); ?>
@@ -167,7 +174,7 @@
 	</div>
 
 	<div class="form-group">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-default')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', array('class'=>'btn btn-default')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

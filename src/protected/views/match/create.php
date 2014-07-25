@@ -1,18 +1,18 @@
 <?php
-/* @var $this PredictionController */
-/* @var $model Prediction */
+/* @var $this MatchController */
+/* @var $model Match */
 
-/*$this->breadcrumbs=array(
-	'Predictions'=>array('index'),
+$this->breadcrumbs=array(
+	'Matches'=>array('index'),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Prediction', 'url'=>array('index')),
-	array('label'=>'Manage Prediction', 'url'=>array('admin')),
-);*/
+	array('label'=>'List Match', 'url'=>array('index')),
+	array('label'=>'Manage Match', 'url'=>array('admin')),
+);
 ?>
 
-<h1>Create Prediction</h1>
+<h1>Create Match</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

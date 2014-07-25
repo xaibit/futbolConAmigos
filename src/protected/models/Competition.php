@@ -6,6 +6,8 @@
  * The followings are the available columns in table 'competition':
  * @property integer $idCompetition
  * @property string $name
+ * @property string $image
+ * @property integer $status
  *
  * The followings are the available model relations:
  * @property Match[] $matches
@@ -28,10 +30,11 @@ class Competition extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'length', 'max'=>500),
+			array('status', 'numerical', 'integerOnly'=>true),
+			array('name, image', 'length', 'max'=>500),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idCompetition, name', 'safe', 'on'=>'search'),
+			array('idCompetition, name, image, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,6 +58,8 @@ class Competition extends CActiveRecord
 		return array(
 			'idCompetition' => 'Id Competition',
 			'name' => 'Name',
+			'image' => 'Imagen',
+			'status' => 'Activa',
 		);
 	}
 
@@ -78,6 +83,9 @@ class Competition extends CActiveRecord
 
 		$criteria->compare('idCompetition',$this->idCompetition);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('image',$this->image,true);
+		$criteria->compare('status',$this->status);
+		
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
