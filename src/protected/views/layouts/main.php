@@ -45,7 +45,7 @@
 			<?php		
 				$this->widget('zii.widgets.CMenu',array(
 					'items'=>array(
-						array('label'=>'Home', 'url'=>array('/site/index')),
+						array('label'=>'Home', 'url'=>array('/site/index'), 'visible'=>Yii::app()->user->isGuest),
 						/*array('label'=>'Usuarios', 'url'=>array('/user/index'), 'visible'=>!Yii::app()->user->isGuest),*/
 						array('label'=>'Grupos', 'url'=>array('/group/index'), 'visible'=>!Yii::app()->user->isGuest),
 						array('label'=>'Partidos', 'url'=>array('/match/index'), 'visible'=>!Yii::app()->user->isGuest),
