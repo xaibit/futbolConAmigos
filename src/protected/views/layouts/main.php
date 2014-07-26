@@ -27,60 +27,54 @@
 <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 <body>
-	<div class="container">
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">
-						<?php echo CHtml::encode(Yii::app()->name); ?>
-					</a>
-				</div>
-				<div class="navbar-collapse collapse">
-				<?php		
-					$this->widget('zii.widgets.CMenu',array(
-						'items'=>array(
-							array('label'=>'Home', 'url'=>array('/site/index')),
-							/*array('label'=>'Usuarios', 'url'=>array('/user/index'), 'visible'=>!Yii::app()->user->isGuest),*/
-							array('label'=>'Grupos', 'url'=>array('/group/index'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'Partidos', 'url'=>array('/match/index'), 'visible'=>!Yii::app()->user->isGuest),
-							/*array('label'=>'Preguntas', 'url'=>array('/question/index'), 'visible'=>!Yii::app()->user->isGuest),*/
-							array('label'=>'Predicciones', 'url'=>array('/prediction/index'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'Equipos', 'url'=>array('/team/index'), 'visible'=>!Yii::app()->user->isGuest),
-							/*array('label'=>'Jugadores', 'url'=>array('/player/index'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'Usuario-Grupo', 'url'=>array('/usergroup/index'), 'visible'=>!Yii::app()->user->isGuest),*/
-							array('label'=>'Competicion', 'url'=>array('/competition/index'), 'visible'=>!Yii::app()->user->isGuest),
-							array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about'), 'visible'=>Yii::app()->user->isGuest),
-							array('label'=>'Contact', 'url'=>array('/site/contact'), 'visible'=>Yii::app()->user->isGuest),
-							array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-							array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-						),
-						'htmlOptions' => array (
-									'class' => 'nav navbar-nav' 
-						),
-						'activeCssClass' => 'active',
-						'itemCssClass' => ''
-					)); 
-				?>
-				</div>
-				<!-- collapsable section -->
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">
+					<?php echo CHtml::encode(Yii::app()->name); ?>
+				</a>
 			</div>
-			<!--  navbar container -->
-		</nav>
-		<!-- mainmenu -->		
-
+			<div class="navbar-collapse collapse">
+			<?php		
+				$this->widget('zii.widgets.CMenu',array(
+					'items'=>array(
+						array('label'=>'Home', 'url'=>array('/site/index')),
+						/*array('label'=>'Usuarios', 'url'=>array('/user/index'), 'visible'=>!Yii::app()->user->isGuest),*/
+						array('label'=>'Grupos', 'url'=>array('/group/index'), 'visible'=>!Yii::app()->user->isGuest),
+						array('label'=>'Partidos', 'url'=>array('/match/index'), 'visible'=>!Yii::app()->user->isGuest),
+						/*array('label'=>'Preguntas', 'url'=>array('/question/index'), 'visible'=>!Yii::app()->user->isGuest),*/
+						array('label'=>'Predicciones', 'url'=>array('/prediction/index'), 'visible'=>!Yii::app()->user->isGuest),
+						array('label'=>'Equipos', 'url'=>array('/team/index'), 'visible'=>!Yii::app()->user->isGuest),
+						/*array('label'=>'Jugadores', 'url'=>array('/player/index'), 'visible'=>!Yii::app()->user->isGuest),
+						array('label'=>'Usuario-Grupo', 'url'=>array('/usergroup/index'), 'visible'=>!Yii::app()->user->isGuest),*/
+						array('label'=>'Competicion', 'url'=>array('/competition/index'), 'visible'=>!Yii::app()->user->isGuest),
+						array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about'), 'visible'=>Yii::app()->user->isGuest),
+						array('label'=>'Contact', 'url'=>array('/site/contact'), 'visible'=>Yii::app()->user->isGuest),
+						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+						array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+					),
+					'htmlOptions' => array (
+								'class' => 'nav navbar-nav' 
+					),
+					'activeCssClass' => 'active',
+					'itemCssClass' => ''
+				)); 
+			?>
+			</div>
+			<!-- collapsable section -->
+		</div>
+		<!--  navbar container -->
+	</nav>
+	<!-- mainmenu -->		
+	<div class="container">
 		<?php echo $content; ?>
-
-		<div class="clear"></div>
-
-
-
 	</div>
 	<!-- main container -->
 	<footer class="footer">

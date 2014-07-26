@@ -3,18 +3,12 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
-
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
-
-<p>Congratulations! You have successfully created your Yii application.</p>
-
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+<br>
+<div class="jumbotron text-center">
+  <h1>Bienvenido a <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+  <p>blah blah blah blah</p>  
+  <p>
+  	<?php echo CHtml::link('Registrarse', array('user/create'), array('class' => 'btn btn-primary btn-lg')); ?>
+  	&nbsp;<?php echo CHtml::link('Iniciar Sesi&oacute;n', array('site/login'), array('class' => 'btn btn-default btn-lg')); ?>
+  </p>
+</div>
