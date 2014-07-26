@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Prediction <?php echo $model->idPrediction; ?></h1>
+<div class="page-header"><h1>&#191;Cu&aacute;l es tu palpito?</h1></div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -18,14 +18,14 @@
 		<div class="col-xs-1 col-md-1">
 			<img width="30" height="30" src="<?php echo Yii::app()->request->baseUrl . '/images/escudos/' . $model->matchRel->localTeam0->image; ?>" alt="">
 		</div>
-		<div class="col-xs-5 col-md-1">
+		<div class="col-xs-4 col-md-1">
 			<?php echo $form->numberField($model,'localGoals', array('class'=>'form-control', 'min'=>0, 'max'=>'15')); ?>
 			<?php echo $form->error($model,'localGoals'); ?>
 		</div>
 		<div class="col-xs-1 col-md-1">
 			<img width="30" height="30" src="<?php echo Yii::app()->request->baseUrl . '/images/escudos/' . $model->matchRel->visitantTeam0->image; ?>" alt="">
 		</div>
-		<div class="col-xs-5 col-md-1">
+		<div class="col-xs-4 col-md-1">
 			<?php echo $form->numberField($model,'visitantGoals', array('class'=>'form-control', 'min'=>0, 'max'=>'15')); ?>
 			<?php echo $form->error($model,'visitantGoals'); ?>
 		</div>			
@@ -42,13 +42,13 @@
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
 		<?php		
 			for ($i = 0; $i < 5; $i++):			
-				$selected = $model->getSelectedOption($i);
+				$selected = $model->answer1;
 				$option = $model->ques1->getOption($i);
 				
 				if (isset($option)):?>
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
-					<?php echo $form->radioButton($model,'answer' . ($i + 1), 
+					<?php echo $form->radioButton($model,'answer1', 
 							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
 					</label>
 				<?php endif;
@@ -68,18 +68,20 @@
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
 		<?php		
 			for ($i = 0; $i < 5; $i++):			
-				$selected = $model->getSelectedOption($i);
+				$selected = $model->answer2;
 				$option = $model->ques2->getOption($i);
 				
 				if (isset($option)):?>
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
-					<?php echo $form->radioButton($model,'answer' . ($i + 1), 
+					<?php echo $form->radioButton($model,'answer2', 
 							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
 					</label>
 				<?php endif;
+				
 			endfor;		 
-		?>	
+		?>
+		
 		<?php echo $form->error($model,'answer2'); ?>
 	</div>
 	<?php }//end if question setted ?>
@@ -94,13 +96,13 @@
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
 		<?php		
 			for ($i = 0; $i < 5; $i++):			
-				$selected = $model->getSelectedOption($i);
+				$selected = $model->answer3;
 				$option = $model->ques3->getOption($i);
 				
 				if (isset($option)):?>
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
-					<?php echo $form->radioButton($model,'answer' . ($i + 1), 
+					<?php echo $form->radioButton($model,'answer3', 
 							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
 					</label>
 				<?php endif;
@@ -120,13 +122,13 @@
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
 		<?php		
 			for ($i = 0; $i < 5; $i++):			
-				$selected = $model->getSelectedOption($i);
+				$selected = $model->answer4;
 				$option = $model->ques4->getOption($i);
 				
 				if (isset($option)):?>
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
-					<?php echo $form->radioButton($model,'answer' . ($i + 1), 
+					<?php echo $form->radioButton($model,'answer4', 
 							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
 					</label>
 				<?php endif;
@@ -146,13 +148,13 @@
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
 		<?php		
 			for ($i = 0; $i < 5; $i++):			
-				$selected = $model->getSelectedOption($i);
+				$selected = $model->answer5;
 				$option = $model->ques5->getOption($i);
 				
 				if (isset($option)):?>
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
-					<?php echo $form->radioButton($model,'answer' . ($i + 1), 
+					<?php echo $form->radioButton($model,'answer5', 
 							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
 					</label>
 				<?php endif;

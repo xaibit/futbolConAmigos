@@ -80,7 +80,7 @@ class PredictionController extends Controller
 		{
 			$model->attributes=$_POST['Prediction'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idPrediction));
+				$this->redirect(array('match/index'));
 		}
 
 		$this->render('create',array(
@@ -104,7 +104,7 @@ class PredictionController extends Controller
 		{
 			$model->attributes=$_POST['Prediction'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idPrediction));
+				$this->redirect(array('match/index'));
 		}
 
 		$this->render('update',array(

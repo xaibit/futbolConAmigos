@@ -30,6 +30,28 @@ body {
 body > .container {
   padding: 60px 15px 0;
 }
+@media (max-width: 768px) {
+	.footer {
+		height: 80px;
+	}
+	body {
+		margin-bottom: 80px;
+	}	
+}
+@media (max-width: 480px) {
+	.btn.btn-register {
+		margin-bottom: 10px
+	}
+}
+
+.container .text-muted {
+	margin: 20px 0 0;
+}
+
+.footer > .container {
+	padding-right: 15px;
+	padding-left: 15px;
+}
 
 .grid-view .button-column {
 	width: 80px;
@@ -46,4 +68,7 @@ body > .container {
 }
 form .btn-group, form .row {
 	margin-bottom: 15px;
+}
+.page-header {
+	margin-top: 20px;
 }

@@ -79,10 +79,9 @@
 	<!-- main container -->
 	<footer class="footer">
 		<div class="container">
-			<br>
-			<p class="text-muted">Copyright &copy; <?php echo date('Y'); ?> <a
-					href="http://palpitofutbolero.com.ar">palpitofutbolero.com.ar</a>&nbsp;|&nbsp;<a
-					href="mailto:palpitofutbolero@gmail.com">palpitofutbolero@gmail.com</a>&nbsp;|&nbsp;Todos
+			<p class="text-muted">Copyright &copy; <?php echo date('Y'); ?> 
+			<a href="http://palpitofutbolero.com.ar">palpitofutbolero.com.ar</a>&nbsp;|&nbsp;
+			<a class="mailto" href="mailto:palpitofutbolero@gmail.com">palpitofutbolero@gmail.com</a>&nbsp;|&nbsp;Todos
 				los derechos reservados
 			</p>
 		</div>

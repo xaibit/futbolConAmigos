@@ -55,6 +55,7 @@ class Prediction extends CActiveRecord
 			array('score', 'length', 'max'=>15),
 			array('predictioncol', 'length', 'max'=>45),
 			array('create, update', 'safe'),
+			array('match', 'checkUniqunessUserPrediction', 'on'=>'create'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('idPrediction, localGoals, visitantGoals, score, question1, answer1, question2, answer2, question3, answer3, question4, answer4, question5, answer5, user, match, predictioncol, create, update', 'safe', 'on'=>'search'),
@@ -160,15 +161,11 @@ class Prediction extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-	
-	public function getSelectedOption($index)
-	{
-		switch ($index) {
-			case 0: return $this->answer1; break;
-			case 1: return $this->answer2; break;
-			case 2: return $this->answer3; break;
-			case 3: return $this->answer4; break;
-			case 4: return $this->answer5; break;				
+
+	public function checkUniqunessUserPrediction($attribute,$params) {
+		if(Prediction::model()->count('user=:user AND t.match=:match',
+				array(':match'=>$this->match, ':user'=>$this->user)) > 0) {
+			$this->addError($attribute, "Ya complet&oacute; el p&aacute;lpito para este partido");
 		}
-	}	
+	}
 }
