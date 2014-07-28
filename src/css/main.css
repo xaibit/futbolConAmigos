@@ -72,3 +72,6 @@ form .btn-group, form .row {
 .page-header {
 	margin-top: 20px;
 }
+.list-group-item.competition {
+	font-size: 26px;
+}
