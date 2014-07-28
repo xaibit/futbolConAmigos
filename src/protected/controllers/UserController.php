@@ -28,7 +28,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'create'),
+				'actions'=>array('index','view', 'create','confirm'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -72,6 +72,7 @@ class UserController extends Controller
 			$model->attributes=$_POST['User'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idUser));
+				sendMail($model->email,$model->idUser);
 		}
 
 		$this->render('create',array(
@@ -101,6 +102,24 @@ class UserController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+	/**
+	 * Updates a particular model.
+	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionConfirm($id)
+	{
+		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		
+		$model->score="0";
+		if($model->save()) {				
+			$this->redirect(array('site/index'));
+		}
 	}
 
 	/**
@@ -181,9 +200,9 @@ class UserController extends Controller
         $sid                 = $id;
         $criteria            = new CDbCriteria();
         $criteria->condition = "id=".$sid."";            
-        $user          = Usuario::model()->findByPk($sid);        
+        $user          = User::model()->findByPk($sid);        
         $params              = array('usermail'=>$user);
-        $message->subject    = 'email test';
+        $message->subject    = 'email confirmation';
         $message->setBody($params, 'text/html');                
         $message->addTo($email);
         $message->from = 'mail@mimail.com.ar';   
