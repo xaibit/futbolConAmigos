@@ -12,7 +12,8 @@ $this->menu=array(
 );
 ?>
 
-<h1>Groups</h1>
+<h1>Grupos</h1>
+<?php echo CHtml::button('Mis Grupos',array('submit'=>array('group/mygroup'),'params'=>array('group' => $data->idGroup, 'user' => Yii::app()->user->id)));?>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
