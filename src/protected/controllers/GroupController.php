@@ -32,7 +32,7 @@ class GroupController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'admin', 'delete'),
+				'actions'=>array('create','update', 'admin', 'delete','mygroup'),
 				'users'=>array('@'),
 			),
 			/*array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -123,6 +123,23 @@ class GroupController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Group');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+	
+	/**
+	 * Lists all models.
+	 */
+	public function actionMygroup()
+	{		
+		
+		$dataProvider=new CActiveDataProvider('Group', array(
+                    'criteria'=>array(
+                        'condition'=>'t.idGroup IN (SELECT u.group FROM `usergroup` `u` WHERE u.user= '.Yii::app()->user->id.' )' ,
+                    )
+                ));
+				
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

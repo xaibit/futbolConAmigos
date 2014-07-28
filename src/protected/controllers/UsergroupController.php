@@ -62,11 +62,22 @@ class UsergroupController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Usergroup;
+	  // made by group controller
+	  if (isset($_POST['group'])) {
+			$model=new Usergroup;
+			$model->group = $_POST['group'];
+			$model->user = $_POST['user'];
+			$model->score = "0";
+			$model->adminPending = "0";
+			$model->save();
+			$this->redirect(array('group/index')); 
+	  }
+		/*$model=new Usergroup;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
+		
 		if(isset($_POST['Usergroup']))
 		{
 			$model->attributes=$_POST['Usergroup'];
@@ -76,7 +87,7 @@ class UsergroupController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
-		));
+		));*/
 	}
 
 	/**
