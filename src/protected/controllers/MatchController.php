@@ -128,7 +128,8 @@ class MatchController extends Controller
 								'predictions' => array(
 										'condition' => 'user=' . Yii::app()->user->id 
 								) 
-						) 
+						),
+						'order'=>'date ASC'						 
 				),
 				'countCriteria'=>array()				 
 		));

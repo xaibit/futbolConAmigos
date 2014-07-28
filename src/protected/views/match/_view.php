@@ -14,8 +14,11 @@
 	 */ 
 ?>
 <?php 
+	$url = empty($data->predictions) ? array('match/view', 'id'=>$data->idMatch) : array('prediction/view', 'id'=>$data->predictions[0]->idPrediction);
 	
-	$url = empty($data->predictions) ? array('prediction/create', 'id'=>$data->idMatch) : array('prediction/update', 'id'=>$data->predictions[0]->idPrediction);
+	if ((strtotime($data->date) - time()) >= (60 * 60)) {
+		$url = empty($data->predictions) ? array('prediction/create', 'id'=>$data->idMatch) : array('prediction/update', 'id'=>$data->predictions[0]->idPrediction);	
+	} 
 	
 ?>
 <?php echo CHtml::link('<h4 class="list-group-item-heading"><img width="30" height="30" alt="' 

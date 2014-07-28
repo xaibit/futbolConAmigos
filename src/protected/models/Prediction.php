@@ -56,6 +56,7 @@ class Prediction extends CActiveRecord
 			array('predictioncol', 'length', 'max'=>45),
 			array('create, update', 'safe'),
 			array('match', 'checkUniqunessUserPrediction', 'on'=>'insert'),
+			array('match', 'checkExpiration'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('idPrediction, localGoals, visitantGoals, score, question1, answer1, question2, answer2, question3, answer3, question4, answer4, question5, answer5, user, match, predictioncol, create, update', 'safe', 'on'=>'search'),
@@ -166,6 +167,12 @@ class Prediction extends CActiveRecord
 		if(Prediction::model()->count('user=:user AND t.match=:match',
 				array(':match'=>$this->match, ':user'=>$this->user)) > 0) {
 			$this->addError($attribute, "Ya complet&oacute; el p&aacute;lpito para este partido");
+		}
+	}
+	
+	public function checkExpiration($attribute, $params) {		
+		if ((strtotime($this->matchRel->date) - time()) < (60 * 60)) {
+			$this->addError($attribute, "Ya no puede completar el p&aacute;lpito para este partido");
 		}
 	}
 }
