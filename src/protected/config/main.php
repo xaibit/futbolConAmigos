@@ -48,7 +48,17 @@ return array(
 			),
 		),
 		// uncomment the following to use a MySQL database
-		
+		'mail' => array(
+			  'class' => 'ext.mail.YiiMail',
+			  'transportType' => 'smtp',
+			  'transportOptions'=>array(
+				'host'=>'smtp.gmail.com',
+				'encryption'=>'ssl', // use ssl
+				'viewPath' => 'application.views.mail',
+				'logging' => true,
+				'dryRun' => false
+		   ),
+	   ),
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=futbolconamigos',
 			'emulatePrepare' => true,
