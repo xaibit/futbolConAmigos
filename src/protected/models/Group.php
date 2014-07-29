@@ -32,6 +32,7 @@ class Group extends CActiveRecord
 		return array(
 			array('userAdmin', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>100),
+			array('name', 'required'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('idGroup, name, userAdmin', 'safe', 'on'=>'search'),

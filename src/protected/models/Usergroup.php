@@ -35,6 +35,7 @@ class Usergroup extends CActiveRecord
 		return array(
 			array('user, group, adminPending, userPending', 'numerical', 'integerOnly'=>true),
 			array('score', 'length', 'max'=>15),
+			array('user', 'checkUniqunessUserGroup', 'on'=>'insert'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('idUserGroup, user, group, score, adminPending, userPending', 'safe', 'on'=>'search'),
@@ -65,7 +66,7 @@ class Usergroup extends CActiveRecord
 			'group' => 'Grupo',
 			'score' => 'Puntos',
 			'adminPending' => 'Pendiente Aprobaci&oacute;n Administrador',
-			'adminPending' => 'Pendiente Aprobaci&oacute;n Usuario'
+			'userPending' => 'Pendiente Aprobaci&oacute;n Usuario'
 		);
 	}
 
@@ -109,5 +110,12 @@ class Usergroup extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function checkUniqunessUserGroup($attribute,$params) {
+		if(Usergroup::model()->count('user=:user AND t.group=:group',
+				array(':group'=>$this->group, ':user'=>$this->user)) > 0) {
+			$this->addError($attribute, "Ya se encuentra inscripto en el grupo");
+		}
 	}
 }

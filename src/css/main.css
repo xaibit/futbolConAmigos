@@ -75,3 +75,17 @@ form .btn-group, form .row {
 .list-group-item.competition {
 	font-size: 26px;
 }
+.list-group-item.group:FIRST-CHILD {
+	border-top: none;
+}
+.empty {
+	margin-left: 15px;
+	font-weight: bold;
+}
+.tab-pane .list-group>.empty {
+	float: left;
+}
+.panel .list-group .list-group-item.pending {
+	border-width: 1px 0;
+	border-radius: 0;
+}

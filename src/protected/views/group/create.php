@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Group</h1>
+<div class="page-header"><h1>Crear Grupo</h1></div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

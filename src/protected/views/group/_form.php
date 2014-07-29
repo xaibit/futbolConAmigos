@@ -13,7 +13,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="alert alert-info">Campos con * son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -23,14 +23,10 @@
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'userAdmin'); ?>
-		<?php echo $form->textField($model,'userAdmin', array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'userAdmin'); ?>
-	</div>
+	<?php echo $form->hiddenField($model,'userAdmin', array('class'=>'form-control')); ?>
 
 	<div class="form-group">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-default')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', array('class'=>'btn btn-default')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

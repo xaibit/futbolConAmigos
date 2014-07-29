@@ -32,7 +32,7 @@ class UsergroupController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'admin', 'delete'),
+				'actions'=>array('create','update', 'admin', 'delete', 'approve'),
 				'users'=>array('@'),
 			),
 			/*array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -63,7 +63,8 @@ class UsergroupController extends Controller
 	public function actionCreate()
 	{
 	  // made by group controller
-	  if (isset($_POST['group'])) {
+
+	  /*if (isset($_POST['group'])) {
 			$model=new Usergroup;
 			$model->group = $_POST['group'];
 			$model->user = $_POST['user'];
@@ -71,8 +72,9 @@ class UsergroupController extends Controller
 			$model->adminPending = "0";
 			$model->save();
 			$this->redirect(array('group/index')); 
-	  }
-		/*$model=new Usergroup;
+	  }*/
+		$model=new Usergroup;
+
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -87,7 +89,7 @@ class UsergroupController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
-		));*/
+		));
 	}
 
 	/**
@@ -152,6 +154,15 @@ class UsergroupController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+	
+	public function actionApprove()
+	{
+		if(isset($_POST['group']) && isset($_POST['user'])) {
+			$model=Usergroup::model()->find('user='.$_POST['user'].' AND t.group='.$_POST['group']);
+			$model->adminPending = 0;
+			$model->save();
+		}		
 	}
 
 	/**

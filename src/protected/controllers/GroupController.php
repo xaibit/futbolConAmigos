@@ -51,8 +51,16 @@ class GroupController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$dataProvider=new CActiveDataProvider('User', array(
+				'criteria'=>array(
+						'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE usergroup.group=:group AND usergroup.adminPending=1 AND t.idUser = usergroup.user)',
+						'params'=>array(':group'=>$id),
+						'order'=>'lastname ASC'
+				)
+		));
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'dataProvider'=>$dataProvider
 		));
 	}
 
@@ -63,6 +71,7 @@ class GroupController extends Controller
 	public function actionCreate()
 	{
 		$model=new Group;
+		$model->userAdmin = Yii::app()->user->id;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -122,9 +131,43 @@ class GroupController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Group');
+		$model = new Usergroup();
+		$model->adminPending = 1;
+		$model->userPending = 0;
+		$model->user = Yii::app()->user->id;
+		$availableGroups=new CActiveDataProvider('Group', array(
+			'criteria'=>array(
+				'condition'=>'userAdmin<>:user AND NOT EXISTS (SELECT 1 FROM usergroup WHERE user=:user AND usergroup.group = t.idGroup)',
+				'params'=>array(':user'=>Yii::app()->user->id),
+				'order'=>'name ASC'
+			)
+		));
+		$enrolledGroups=new CActiveDataProvider('Group', array(
+			'criteria'=>array(
+				'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE usergroup.user=:user AND usergroup.group = t.idGroup AND usergroup.adminPending=0)',
+				'params'=>array(':user'=>Yii::app()->user->id)
+			)
+		));
+		$ownerGroup=new CActiveDataProvider('Group', array(
+			'criteria'=>array(
+				'condition'=>'userAdmin=:user',
+				'params'=>array(':user'=>Yii::app()->user->id),
+				'order'=>'name ASC'
+			)
+		));
+		$pendingGroup=new CActiveDataProvider('Group', array(
+				'criteria'=>array(
+						'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE user=:user AND adminPending=1 AND usergroup.group = t.idGroup)',
+						'params'=>array(':user'=>Yii::app()->user->id),
+						'order'=>'name ASC'
+				)
+		));
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'available'=>$availableGroups,
+			'enrolled'=>$enrolledGroups,
+			'owner'=>$ownerGroup,
+			'pending'=>$pendingGroup,
+			'model'=>$model
 		));
 	}
 	
