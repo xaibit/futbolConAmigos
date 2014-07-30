@@ -49,16 +49,16 @@ return array(
 		),
 		// uncomment the following to use a MySQL database
 		'mail' => array(
-			  'class' => 'ext.mail.YiiMail',
-			  'transportType' => 'smtp',
-			  'transportOptions'=>array(
-				'host'=>'smtp.gmail.com',
-				'encryption'=>'ssl', // use ssl
-				'viewPath' => 'application.views.mail',
-				'logging' => true,
-				'dryRun' => false
-		   ),
-	   ),
+                'class' => 'ext.yii-mail.YiiMail',
+                'transportType'=>'smtp',
+                'transportOptions'=>array(
+                        'host'=>'mx1.hostinger.com.ar',						
+                        'username'=>'contacto@tecomento.com.ar',
+                        'password'=>'matute1',
+                        'port'=>'2525',                       
+                ),
+                'viewPath' => 'application.views.mail',             
+        ),
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=futbolconamigos',
 			'emulatePrepare' => true,
