@@ -33,9 +33,6 @@ $this->breadcrumbs=array(
 		<?php echo $form->labelEx($model,'contrase&ntilde;a'); ?>
 		<?php echo $form->passwordField($model,'password', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'password'); ?>
-		<span class="help-block">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-		</span>
 	</div>
 
 	<div class="checkbox">
