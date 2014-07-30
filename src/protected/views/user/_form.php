@@ -77,19 +77,18 @@
 		<?php echo $form->error($model,'nickname'); ?>
 	</div>
 
-
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'male'); ?>
 		<?php echo $form->dropDownList($model,'male',array('0'=>'Mujer','1'=>'Hombre')); ?>
-		<?php echo $form->error($model,'male'); ?>
+		<?php echo $form->error($model,'male'); ?>		
 	</div>		
 	
-	<div class="form-group">
+	<!-- <div class="form-group">
 		<?php echo $form->labelEx($model,'dni'); ?>
 		<?php echo $form->textField($model,'dni',array('size'=>15,'maxlength'=>15, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'dni'); ?>
 	</div>
-
+	-->
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
