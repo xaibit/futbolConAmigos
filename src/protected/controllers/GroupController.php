@@ -135,20 +135,24 @@ class GroupController extends Controller
 		$model->adminPending = 1;
 		$model->userPending = 0;
 		$model->user = Yii::app()->user->id;
-		$availableGroups=new CActiveDataProvider('Group', array(
+		
+		$group=new Group('search');
+		$group->unsetAttributes();  // clear any default values
+		if(isset($_GET['Group']))
+			$group->attributes=$_GET['Group'];
+		
+		$all=new CActiveDataProvider('Group', array(
 			'criteria'=>array(
-				'condition'=>'userAdmin<>:user AND NOT EXISTS (SELECT 1 FROM usergroup WHERE user=:user AND usergroup.group = t.idGroup)',
-				'params'=>array(':user'=>Yii::app()->user->id),
 				'order'=>'name ASC'
 			)
 		));
-		$enrolledGroups=new CActiveDataProvider('Group', array(
+		$own=new CActiveDataProvider('Group', array(
 			'criteria'=>array(
 				'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE usergroup.user=:user AND usergroup.group = t.idGroup AND usergroup.adminPending=0)',
 				'params'=>array(':user'=>Yii::app()->user->id)
 			)
 		));
-		$ownerGroup=new CActiveDataProvider('Group', array(
+		/*$ownerGroup=new CActiveDataProvider('Group', array(
 			'criteria'=>array(
 				'condition'=>'userAdmin=:user',
 				'params'=>array(':user'=>Yii::app()->user->id),
@@ -161,13 +165,12 @@ class GroupController extends Controller
 						'params'=>array(':user'=>Yii::app()->user->id),
 						'order'=>'name ASC'
 				)
-		));
+		));*/
 		$this->render('index',array(
-			'available'=>$availableGroups,
-			'enrolled'=>$enrolledGroups,
-			'owner'=>$ownerGroup,
-			'pending'=>$pendingGroup,
-			'model'=>$model
+			'all'=>$all,
+			'own'=>$own,
+			'model'=>$model,
+			'group'=>$group
 		));
 	}
 	
