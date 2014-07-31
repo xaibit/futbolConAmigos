@@ -18,7 +18,7 @@
 				echo $form->hiddenField($model,'adminPending');
 				echo $form->hiddenField($model,'userPending');
 		
-				echo CHtml::ajaxSubmitButton('Postularse', array('usergroup/create'), array('success'=>'function(){$.fn.yiiListView.update("to-enroll");}'), array('class'=>'btn btn-primary'));
+				echo CHtml::ajaxSubmitButton('Postularse', array('usergroup/create'), array('success'=>'function(){$.fn.yiiListView.update("to-enroll");$.fn.yiiListView.update("pending-list");}'), array('class'=>'btn btn-success'));
 				$this->endWidget();
 			 ?>						
 		</div>

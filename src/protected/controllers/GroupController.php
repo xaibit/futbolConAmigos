@@ -53,9 +53,9 @@ class GroupController extends Controller
 	{
 		$dataProvider=new CActiveDataProvider('User', array(
 				'criteria'=>array(
-						'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE usergroup.group=:group AND usergroup.adminPending=1 AND t.idUser = usergroup.user)',
-						'params'=>array(':group'=>$id),
-						'order'=>'lastname ASC'
+					'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE usergroup.group=:group AND usergroup.adminPending=1 AND t.idUser = usergroup.user)',
+					'params'=>array(':group'=>$id),
+					'order'=>'lastname ASC'
 				)
 		));
 		$this->render('view',array(
@@ -138,56 +138,36 @@ class GroupController extends Controller
 		
 		$group=new Group('search');
 		$group->unsetAttributes();  // clear any default values
+		$group->userAdmin = '<>' . $model->user;
 		if(isset($_GET['Group']))
 			$group->attributes=$_GET['Group'];
+		$searchCondition = (isset($_GET['Group'])) ? 'name LIKE "%'.$_GET['Group']['name'].'%" AND ' : ''; 
 		
+		$mygroups=new CActiveDataProvider('Group', array(
+			'criteria'=>array(
+				'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE user=:user AND adminPending=0 AND userPending=0 AND usergroup.group = t.idGroup) OR userAdmin=:user',
+				'params'=>array(':user'=>$model->user),
+				'order'=>'name ASC'
+			)
+		));
 		$all=new CActiveDataProvider('Group', array(
 			'criteria'=>array(
-				'order'=>'name ASC'
+				'condition'=>$searchCondition . 'userAdmin<>:user AND NOT EXISTS (SELECT 1 FROM usergroup WHERE usergroup.user=:user AND usergroup.group = t.idGroup)',
+				'params'=>array(':user'=>$model->user)
 			)
 		));
-		$own=new CActiveDataProvider('Group', array(
-			'criteria'=>array(
-				'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE usergroup.user=:user AND usergroup.group = t.idGroup AND usergroup.adminPending=0)',
-				'params'=>array(':user'=>Yii::app()->user->id)
-			)
-		));
-		/*$ownerGroup=new CActiveDataProvider('Group', array(
-			'criteria'=>array(
-				'condition'=>'userAdmin=:user',
-				'params'=>array(':user'=>Yii::app()->user->id),
-				'order'=>'name ASC'
-			)
-		));
-		$pendingGroup=new CActiveDataProvider('Group', array(
+		$pending=new CActiveDataProvider('Group', array(
 				'criteria'=>array(
-						'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE user=:user AND adminPending=1 AND usergroup.group = t.idGroup)',
-						'params'=>array(':user'=>Yii::app()->user->id),
-						'order'=>'name ASC'
+					'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE usergroup.user=:user AND usergroup.group = t.idGroup AND usergroup.adminPending=1)',
+					'params'=>array(':user'=>$model->user)
 				)
-		));*/
+		));
 		$this->render('index',array(
+			'mygroups'=>$mygroups,
 			'all'=>$all,
-			'own'=>$own,
+			'pending'=>$pending,
 			'model'=>$model,
 			'group'=>$group
-		));
-	}
-	
-	/**
-	 * Lists all models.
-	 */
-	public function actionMygroup()
-	{		
-		
-		$dataProvider=new CActiveDataProvider('Group', array(
-                    'criteria'=>array(
-                        'condition'=>'t.idGroup IN (SELECT u.group FROM `usergroup` `u` WHERE u.user= '.Yii::app()->user->id.' )' ,
-                    )
-                ));
-				
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
 		));
 	}
 

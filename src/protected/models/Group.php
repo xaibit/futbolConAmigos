@@ -48,8 +48,9 @@ class Group extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'admin' => array(self::BELONGS_TO, 'User', 'userAdmin'),
-			'usergroup' => array(self::HAS_MANY, 'Usergroup', 'group'),
+			'usergroups' => array(self::HAS_MANY, 'Usergroup', 'group'),
 			'users' => array(self::MANY_MANY, 'User', 'usergroup(user, group)'),
+			//'enrolled'
 		);
 	}
 

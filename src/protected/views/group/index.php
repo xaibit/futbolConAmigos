@@ -13,7 +13,7 @@ $this->menu=array(
 
 Yii::app()->clientScript->registerScript('search', "
 $('#search-group').submit(function(){
-	$.fn.yiiListView.update('groups', {data:$(this).serialize()});
+	$.fn.yiiListView.update('to-enroll', {data:$(this).serialize()});
 	return false;
 });
 ");
@@ -29,7 +29,10 @@ $('#search-group').submit(function(){
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
 			<li class="active">
-				<a href="#own" role="tab" data-toggle="tab">Mis Grupos</a>
+				<a href="#mygroups" role="tab" data-toggle="tab">Mis Grupos</a>
+			</li>
+			<li>
+				<a href="#pending" role="tab" data-toggle="tab">Pendientes de Aprobaci&oacute;n</a>
 			</li>
 			<li>
 				<a href="#search" role="tab" data-toggle="tab">Buscar Grupos</a>
@@ -37,20 +40,32 @@ $('#search-group').submit(function(){
 		</ul>
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<div class="tab-pane active" id="own">
+			<div class="tab-pane fade in active" id="mygroups">
 			<?php 
 				$this->widget('zii.widgets.CListView', array(
-					'dataProvider'=>$own,
+					'dataProvider'=>$mygroups,
 					'itemView'=>'_view',
-					'template'=>'{items}{pager}'
+					'template'=>'{items}{pager}',
+					'viewData'=>array('model'=>$model)
 				)); ?>
 			</div>
-			<div class="tab-pane" id="search">
+			<div class="tab-pane fade" id="pending">
+			<?php 
+				$this->widget('zii.widgets.CListView', array(
+					'dataProvider'=>$pending,
+					'itemView'=>'_view',
+					'template'=>'{items}{pager}',
+					'viewData'=>array('model'=>$model),
+					'id'=>'pending-list'
+				)); ?>
+			</div>
+			<div class="tab-pane fade" id="search">
 			<?php
 				$form=$this->beginWidget('CActiveForm', array(
 					'action'=>Yii::app()->createUrl($this->route),
 					'method'=>'get',
-					'id'=>'search-group'
+					'id'=>'search-group',
+					'htmlOptions'=>array('class'=>'form-inline')
 				)); 
 			?>
 			<div class="form-group">
@@ -63,30 +78,13 @@ $('#search-group').submit(function(){
 			<?php $this->endWidget(); ?>
 			<?php 
 				$this->widget('zii.widgets.CListView', array(
-					'dataProvider'=>$group->search(),
-					'itemView'=>'_view',
-					'template'=>'{items}{pager}',
-					'id'=>'groups'
-				)); ?>
-			</div>
-			<!-- <div class="tab-pane" id="available">
-			<?php 
-				/*$this->widget('zii.widgets.CListView', array(
-					'dataProvider'=>$available,
+					'dataProvider'=>$all,
 					'itemView'=>'_view_toenroll',
 					'template'=>'{items}{pager}',
-					'viewData' => array( 'model' => $model),
-					'id'=>'to-enroll'
-				));*/ ?>
+					'id'=>'to-enroll',
+					'viewData'=>array('model'=>$model)
+				)); ?>
 			</div>
-			<div class="tab-pane" id="pending">
-			<?php 
-				/*$this->widget('zii.widgets.CListView', array(
-					'dataProvider'=>$pending,
-					'itemView'=>'_view',
-					'template'=>'{items}{pager}'
-				));*/ ?>
-			</div>-->
 		</div>		
 	</div>
 </div>

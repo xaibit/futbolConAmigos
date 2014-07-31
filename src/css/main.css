@@ -77,6 +77,7 @@ form .btn-group, form .row {
 }
 .list-group-item.group:FIRST-CHILD {
 	border-top: none;
+	border-radius: 0;
 }
 .empty {
 	margin-left: 15px;
@@ -88,4 +89,9 @@ form .btn-group, form .row {
 .panel .list-group .list-group-item.pending {
 	border-width: 1px 0;
 	border-radius: 0;
+}
+#search-group {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	padding: 15px;	
 }
