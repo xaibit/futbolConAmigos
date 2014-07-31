@@ -33,7 +33,23 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'born'); ?>
-		<?php echo $form->textField($model,'born', array('class'=>'form-control')); ?>
+		<?php                      Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
+        $this->widget('CJuiDateTimePicker',array(
+                'language'=>'es',
+                'model'=>$model,                                // Model object
+                'attribute'=>'born', // Attribute name
+                'mode'=>'date',                     // Use "time","date" or "datetime" (default)
+                'options'=>array('dateFormat'=>'yy-mm-dd',
+					'showAnim'=>'slide',//'slide','fold','slideDown','fadeIn','blind','bounce','clip','drop'
+					'changeMonth'=>true,
+					'changeYear'=>true,
+					'yearRange'=>'1930:2025',
+					'minDate' => '1930-01-01',      // minimum date
+					'maxDate' => '2025-12-31',      // maximum date
+				),                     // jquery plugin options
+                'htmlOptions'=>array('readonly'=>true) // HTML options
+        ));                             
+        ?> 
 		<?php echo $form->error($model,'born'); ?>
 	</div>
 
@@ -62,23 +78,17 @@
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'score'); ?>
-		<?php echo $form->textField($model,'score', array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'score'); ?>
-	</div>
-
-	<div class="form-group">
 		<?php echo $form->labelEx($model,'male'); ?>
-		<?php echo $form->textField($model,'male',array('size'=>1,'maxlength'=>1, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'male'); ?>
+		<?php echo $form->dropDownList($model,'male',array('0'=>'Mujer','1'=>'Hombre')); ?>
+		<?php echo $form->error($model,'male'); ?>		
 	</div>		
 	
-	<div class="form-group">
+	<!-- <div class="form-group">
 		<?php echo $form->labelEx($model,'dni'); ?>
 		<?php echo $form->textField($model,'dni',array('size'=>15,'maxlength'=>15, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'dni'); ?>
 	</div>
-
+	-->
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>

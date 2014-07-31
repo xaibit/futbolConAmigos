@@ -18,12 +18,19 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
+		$usuario=strtolower($this->username);
+        //$user = Usuario::model()->find('LOWER(correo)=?',array($usuario));
+		$user = User::model()->findByAttributes(array('email'=>$usuario));
+		 if ($user !== null) {
+			//if (($user->clave == $this->password) && ($user->activo == 1)){
+			if (($user->password == $this->password) && ($user->score != NULL)){
+				$this->id=$user->idUser;            
+				$this->username=$user->nickname;      
+				$this->errorCode=self::ERROR_NONE;					
+				return TRUE;				
+			}
+		 }
+		/*if(!isset($users[$this->username]))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		elseif($users[$this->username]!==$this->password)
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
@@ -31,7 +38,7 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_NONE;
 			$this->id = 1;
 		}
-		return !$this->errorCode;
+		return !$this->errorCode;*/
 	}
 	
 	public function getId()

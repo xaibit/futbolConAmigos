@@ -70,9 +70,25 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->idUser));
-				sendMail($model->email,$model->idUser);
+			if($model->save()) {
+				
+				
+				$email = $model->email;
+				$id = $model->idUser;				
+				 $message            = new YiiMailMessage;
+				   //this points to the file test.php inside the view path
+				$message->view = "test";
+				$sid                 = $id;
+				$criteria            = new CDbCriteria();
+				$criteria->condition = "id=".$sid."";            
+				$user          = User::model()->findByPk($sid);        
+				$params              = array('usermail'=>$user);
+				$message->subject    = 'Validacion de correo';
+				$message->setBody($params, 'text/html');                
+				$message->addTo($email);
+				$message->from = 'contacto@tecomento.com.ar';   
+				Yii::app()->mail->send($message);   
+			}	
 		}
 
 		$this->render('create',array(
