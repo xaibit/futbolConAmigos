@@ -44,7 +44,11 @@ class User extends CActiveRecord
 			array('name, lastname, state, city, nickname, password', 'length', 'max'=>100),
 			array('email', 'length', 'max'=>200),
 			array('male', 'length', 'max'=>1),
+			array('email', 'required'),
 			array('password', 'required'),
+			array('nickname', 'required'),
+			array('name', 'required'),
+			array('lastname', 'required'),	
 			array('born', 'safe'),
 			array('dni', 'length', 'max'=>15),
 			// The following rule is used by search().
