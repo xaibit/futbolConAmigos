@@ -88,6 +88,7 @@ class UserController extends Controller
 				$message->addTo($email);
 				$message->from = 'contacto@tecomento.com.ar';   
 				Yii::app()->mail->send($message);   
+				$this->redirect(array('site/confirmar'));
 			}	
 		}
 
