@@ -107,6 +107,18 @@ class SiteController extends Controller
 		$this->redirect(Yii::app()->homeUrl);
 	}
 	/**
+	 * This is the default 'index' action that is invoked
+	 * when an action is not explicitly requested by users.
+	 */
+	public function actionConfirmar()
+	{
+		// renders the view file 'protected/views/site/index.php'
+		// using the default layout 'protected/views/layouts/main.php'
+		
+		$this->layout = 'main';
+		$this->render('confirmar');
+	}
+	/**
 	* funcion para activar correo
 	*/
 	public function actionActivatemail($id,$verificationcode)
