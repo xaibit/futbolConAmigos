@@ -56,8 +56,8 @@ class Competition extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idCompetition' => 'Id Competition',
-			'name' => 'Name',
+			'idCompetition' => 'Id Competición',
+			'name' => 'Nombre',
 			'image' => 'Imagen',
 			'status' => 'Activa',
 		);

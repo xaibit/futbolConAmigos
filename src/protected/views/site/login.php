@@ -9,9 +9,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Login</h1>
+<h1>Ingresar</h1>
 
-<p>Please fill out the following form with your login credentials:</p>
+<p>Por favor llene los siguentes campos con sus datos de usuario:</p>
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
@@ -21,7 +21,7 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Los campos con  <span class="required">*</span> son obligatorios</p>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'correo'); ?>

@@ -59,7 +59,7 @@ class Group extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'idGroup' => 'Id Group',
+			'idGroup' => 'Id Grupo',
 			'name' => 'Nombre',
 			'userAdmin' => 'Administrador',
 		);
