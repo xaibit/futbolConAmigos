@@ -50,6 +50,7 @@ class User extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('idUser, name, lastname, born, email, state, city, nickname, score, male, password, dni', 'safe', 'on'=>'search'),
+			array('email', 'unique', 'on'=>'insert', 'message' => '{attribute}:{value} ya existe!'),
 		);
 	}
 
