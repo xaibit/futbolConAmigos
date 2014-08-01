@@ -74,7 +74,10 @@ class UserController extends Controller
 				
 				
 				$email = $model->email;
-				$id = $model->idUser;				
+				$id = $model->idUser;			
+				$sql = 'INSERT INTO usergroup VALUES (null,'.$id.',1,0,0,0)';
+				$command = Yii::app()->db->createCommand($sql);
+				$command->execute();				
 				 $message            = new YiiMailMessage;
 				   //this points to the file test.php inside the view path
 				$message->view = "test";
