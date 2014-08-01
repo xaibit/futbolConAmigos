@@ -9,7 +9,7 @@
  * @property integer $userAdmin
  *
  * The followings are the available model relations:
- * @property User $userAdmin0
+ * @property User $admin
  * @property Usergroup[] $usergroups
  */
 class Group extends CActiveRecord

@@ -16,7 +16,7 @@
 				echo CHtml::hiddenField('user', $data->idUser);
 				echo CHtml::hiddenField('group', $group);
 		
-				echo CHtml::ajaxSubmitButton('Aprobar', array('usergroup/approve'), array('success'=>'function(){$.fn.yiiListView.update("pending-list");}'), array('class'=>'btn btn-primary btn-approve'));
+				echo CHtml::ajaxSubmitButton('Aprobar', array('usergroup/approve'), array('success'=>'function(){$.fn.yiiListView.update("pending-list");$.fn.yiiListView.update("players-list");}'), array('class'=>'btn btn-primary btn-approve'));
 				$this->endWidget();
 			 ?>						
 		</div>

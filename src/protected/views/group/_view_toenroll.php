@@ -6,8 +6,11 @@
 	<div class="row">
 		<div class="col-md-4">
 			<?php echo CHtml::link(CHtml::encode($data->name), array('view', 'id'=>$data->idGroup)); ?>
-			</div>
-		<div class="col-md-2 col-md-offset-6">		
+		</div>
+		<div class="col-md-2">
+			<?php echo CHtml::encode($data->admin->nickname); ?>
+		</div>
+		<div class="col-md-2 col-md-offset-4">		
 			<?php
 				$model->group = $data->idGroup; 
 				$form=$this->beginWidget('CActiveForm', array(

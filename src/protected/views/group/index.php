@@ -41,50 +41,74 @@ $('#search-group').submit(function(){
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div class="tab-pane fade in active" id="mygroups">
-			<?php 
-				$this->widget('zii.widgets.CListView', array(
-					'dataProvider'=>$mygroups,
-					'itemView'=>'_view',
-					'template'=>'{items}{pager}',
-					'viewData'=>array('model'=>$model)
-				)); ?>
+				<div class="panel panel-default inner-panel">				
+					<?php 
+						$this->widget('zii.widgets.CListView', array(
+							'dataProvider'=>$mygroups,
+							'itemView'=>'_view',
+							'template'=>'{items}{pager}',
+							'viewData'=>array('model'=>$model),
+							'itemsCssClass'=>'',
+							'htmlOptions'=>array('class'=>'list-group'),
+							'emptyText'=>'<li class="list-group-item">No hay resultados</li>'
+						)); ?>
+				</div>
 			</div>
 			<div class="tab-pane fade" id="pending">
-			<?php 
-				$this->widget('zii.widgets.CListView', array(
-					'dataProvider'=>$pending,
-					'itemView'=>'_view',
-					'template'=>'{items}{pager}',
-					'viewData'=>array('model'=>$model),
-					'id'=>'pending-list'
-				)); ?>
+				<div class="panel panel-default inner-panel">										
+					<?php 
+						$this->widget('zii.widgets.CListView', array(
+							'dataProvider'=>$pending,
+							'itemView'=>'_view',
+							'template'=>'{items}{pager}',
+							'viewData'=>array('model'=>$model),
+							'id'=>'pending-list',
+							'itemsCssClass'=>'',
+							'htmlOptions'=>array('class'=>'list-group'),
+							'emptyText'=>'<li class="list-group-item">No hay resultados</li>'
+						)); ?>
+				</div>
 			</div>
 			<div class="tab-pane fade" id="search">
-			<?php
-				$form=$this->beginWidget('CActiveForm', array(
-					'action'=>Yii::app()->createUrl($this->route),
-					'method'=>'get',
-					'id'=>'search-group',
-					'htmlOptions'=>array('class'=>'form-inline')
-				)); 
-			?>
-			<div class="form-group">
-				<?php echo $form->label($group,'name'); ?>
-				<?php echo $form->textField($group,'name',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
-			</div>
-			<div class="form-group">
-				<?php echo CHtml::submitButton('Buscar', array('class'=>'btn btn-info')); ?>
-			</div>
-			<?php $this->endWidget(); ?>
-			<?php 
-				$this->widget('zii.widgets.CListView', array(
-					'dataProvider'=>$all,
-					'itemView'=>'_view_toenroll',
-					'template'=>'{items}{pager}',
-					'id'=>'to-enroll',
-					'viewData'=>array('model'=>$model)
-				)); ?>
-			</div>
-		</div>		
+				<div class="panel panel-default inner-panel">
+					<div class="panel-body">
+						<?php
+							$form=$this->beginWidget('CActiveForm', array(
+								'action'=>Yii::app()->createUrl($this->route),
+								'method'=>'get',
+								'id'=>'search-group',
+								'htmlOptions'=>array('class'=>'form-inline')
+							)); 
+						?>						
+						<div class="form-group">
+							<?php echo $form->label($group,'name'); ?>
+							<?php echo $form->textField($group,'name',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
+						</div>
+						<div class="form-group">
+							<?php echo CHtml::submitButton('Buscar', array('class'=>'btn btn-info')); ?>
+						</div>
+						<?php $this->endWidget(); ?>
+						<br>
+						<div class="row">
+							<div class="col-md-4"><strong>Grupo</strong></div>
+							<div class="col-md-2"><strong>Administrador</strong></div>
+							<div class="col-md-2 col-md-offset-4"><strong>Acci&oacute;n</strong></div>
+						</div>
+					</div>
+						<?php 
+							$this->widget('zii.widgets.CListView', array(
+								'dataProvider'=>$all,
+								'itemView'=>'_view_toenroll',
+								'template'=>'{items}{pager}',
+								'id'=>'to-enroll',
+								'viewData'=>array('model'=>$model),
+								'itemsCssClass'=>'',
+								'htmlOptions'=>array('class'=>'list-group'),
+								'emptyText'=>'<li class="list-group-item">No hay resultados</li>'
+							)); ?>
+												
+				</div><!-- panel -->
+			</div><!-- tab-pane -->
+		</div>
 	</div>
 </div>

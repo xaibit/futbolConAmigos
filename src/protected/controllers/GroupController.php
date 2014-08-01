@@ -58,9 +58,17 @@ class GroupController extends Controller
 					'order'=>'lastname ASC'
 				)
 		));
+		$players=new CActiveDataProvider('Usergroup', array(
+				'criteria'=>array(
+					'condition'=>'t.group =:group AND t.adminPending=0 AND t.userPending=0',
+					'params'=>array(':group'=>$id),
+					'order'=>'score DESC'
+				)
+		));
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-			'dataProvider'=>$dataProvider
+			'dataProvider'=>$dataProvider,
+			'players'=>$players
 		));
 	}
 
