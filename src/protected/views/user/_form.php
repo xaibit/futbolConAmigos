@@ -17,18 +17,18 @@
 
 	<p class="note">Campos con  <span class="required">*</span> son obligatorios.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model, null, null, array('class'=>'alert alert-danger')); ?>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'name'); ?>
+		<?php echo $form->error($model,'name', array('class'=>'text-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'lastname'); ?>
 		<?php echo $form->textField($model,'lastname',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'lastname'); ?>
+		<?php echo $form->error($model,'lastname', array('class'=>'text-danger')); ?>
 	</div>
 
 	<div class="form-group">
@@ -56,46 +56,46 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>200, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'email'); ?>
+		<?php echo $form->error($model,'email', array('class'=>'text-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'state'); ?>
 		<?php echo $form->textField($model,'state',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'state'); ?>
+		<?php echo $form->error($model,'state', array('class'=>'text-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'city'); ?>
 		<?php echo $form->textField($model,'city',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'city'); ?>
+		<?php echo $form->error($model,'city', array('class'=>'text-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'nickname'); ?>
 		<?php echo $form->textField($model,'nickname',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'nickname'); ?>
+		<?php echo $form->error($model,'nickname', array('class'=>'text-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'male'); ?>
 		<?php echo $form->dropDownList($model,'male',array('0'=>'Mujer','1'=>'Hombre')); ?>
-		<?php echo $form->error($model,'male'); ?>		
+		<?php echo $form->error($model,'male', array('class'=>'text-danger')); ?>		
 	</div>		
 	
 	<!-- <div class="form-group">
 		<?php echo $form->labelEx($model,'dni'); ?>
 		<?php echo $form->textField($model,'dni',array('size'=>15,'maxlength'=>15, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'dni'); ?>
+		<?php echo $form->error($model,'dni', array('class'=>'text-danger')); ?>
 	</div>
 	-->
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>100, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'password'); ?>
+		<?php echo $form->error($model,'password', array('class'=>'text-danger')); ?>
 	</div>
 	<div class="form-group">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-default')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrarse' : 'Guardar', array('class'=>'btn btn-default')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

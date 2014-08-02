@@ -140,4 +140,20 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)
+			{
+				$salt = '$2y$11$' . substr(md5(uniqid(rand(), true)), 0, 22);
+				$this->password = crypt($this->password, $salt);
+	
+			}
+			return true;
+		}
+		else
+			return false;
+	}
 }

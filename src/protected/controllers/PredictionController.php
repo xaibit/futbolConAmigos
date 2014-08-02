@@ -131,9 +131,15 @@ class PredictionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Prediction');
+		$dataProvider=new CActiveDataProvider('Prediction', array(
+				'criteria'=>array(
+					'condition'=>'user=:user',
+					'params'=>array(':user'=>Yii::app()->user->id)
+				) 
+			)
+		);
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'dataProvider'=>$dataProvider			
 		));
 	}
 

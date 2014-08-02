@@ -122,19 +122,10 @@ class MatchController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider = new CActiveDataProvider('Match', array(
-				'criteria' => array(
-						'with' => array(
-								'predictions' => array(
-										'condition' => 'user=' . Yii::app()->user->id 
-								) 
-						),
-						'order'=>'date ASC'						 
-				),
-				'countCriteria'=>array()				 
-		));
+		$competitions = Competition::model()->findAll();
+		
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'competitions'=>$competitions
 		));
 	}
 

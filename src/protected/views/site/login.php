@@ -9,30 +9,28 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Ingresar</h1>
+<div class="page-header"><h1>Ingresar</h1></div>
 
-<p>Por favor llene los siguentes campos con sus datos de usuario:</p>
+<p>Por favor llene los siguentes campos con sus datos de usuario. Los campos con  <span class="required">*</span> son obligatorios.</p>
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
+		'validateOnSubmit'=>true
 	),
 )); ?>
 
-	<p class="note">Los campos con  <span class="required">*</span> son obligatorios</p>
-
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'correo'); ?>
+		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username', array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'username'); ?>
+		<?php echo $form->error($model,'username', array('class'=>'text-danger')); ?>
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'contrase&ntilde;a'); ?>
+		<?php echo $form->labelEx($model,'password', array('class'=>'control-label')); ?>
 		<?php echo $form->passwordField($model,'password', array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'password'); ?>
+		<?php echo $form->error($model,'password', array('class'=>'text-danger')); ?>
 	</div>
 
 	<div class="checkbox">

@@ -49,7 +49,7 @@
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
 					<?php echo $form->radioButton($model,'answer1', 
-							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
+							array('value'=>$i, 'uncheckValue'=>-1)) . $option; ?>
 					</label>
 				<?php endif;
 			endfor;		 
@@ -75,7 +75,7 @@
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
 					<?php echo $form->radioButton($model,'answer2', 
-							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
+							array('value'=>$i, 'uncheckValue'=>-1)) . $option; ?>
 					</label>
 				<?php endif;
 				
@@ -103,7 +103,7 @@
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
 					<?php echo $form->radioButton($model,'answer3', 
-							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
+							array('value'=>$i, 'uncheckValue'=>-1)) . $option; ?>
 					</label>
 				<?php endif;
 			endfor;		 
@@ -129,7 +129,7 @@
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
 					<?php echo $form->radioButton($model,'answer4', 
-							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
+							array('value'=>$i, 'uncheckValue'=>-1)) . $option; ?>
 					</label>
 				<?php endif;
 			endfor;		 
@@ -155,7 +155,7 @@
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
 					<?php echo $form->radioButton($model,'answer5', 
-							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
+							array('value'=>$i, 'uncheckValue'=>-1)) . $option; ?>
 					</label>
 				<?php endif;
 			endfor;		 

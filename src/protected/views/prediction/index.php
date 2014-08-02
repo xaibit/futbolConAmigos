@@ -12,7 +12,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>Predictions</h1>
+<div class="page-header">
+	<h1>Mis P&aacute;lpitos</h1>
+</div>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

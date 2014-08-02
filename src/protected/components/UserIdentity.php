@@ -22,14 +22,18 @@ class UserIdentity extends CUserIdentity
         //$user = Usuario::model()->find('LOWER(correo)=?',array($usuario));
 		$user = User::model()->findByAttributes(array('email'=>$usuario));
 		 if ($user !== null) {
-			//if (($user->clave == $this->password) && ($user->activo == 1)){
-			if (($user->password == $this->password) && ($user->score != NULL)){
+			if (($user->password == crypt($this->password, $user->password)) && ($user->score != NULL)){
 				$this->id=$user->idUser;            
 				$this->username=$user->nickname;      
-				$this->errorCode=self::ERROR_NONE;					
-				return TRUE;				
+				$this->errorCode=self::ERROR_NONE;												
+			} else if ($user->score == null) {
+				$this->errorCode=self::ERROR_PASSWORD_INVALID;
 			}
+		 } else {
+		 	$this->errorCode=self::ERROR_USERNAME_INVALID;
 		 }
+		 
+		 return $this->errorCode==self::ERROR_NONE;
 		/*if(!isset($users[$this->username]))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		elseif($users[$this->username]!==$this->password)

@@ -15,19 +15,17 @@ $this->menu=array(
 	array('label'=>'Manage Match', 'url'=>array('admin')),
 );
 ?>
-
-<h1>View Match #<?php echo $model->idMatch; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'idMatch',
-		'localTeam',
-		'visitantTeam',
-		'date',
-		'afaDate',
-		'place',
-		'localGoals',
-		'visitantGoals',
-	),
-)); ?>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+		<span class="badge"><?php echo isset($model->localGoals) ? $model->localGoals : '-'; ?></span>&nbsp;
+		<?php echo $model->localTeam0->name;?>
+		&nbsp;-&nbsp;<?php echo $model->visitantTeam0->name;?>
+		<span class="badge"><?php echo isset($model->localGoals) ? $model->visitantGoals : '-'; ?></span>
+	</div>
+	<div class="panel-body">
+		<p><strong>D&iacute;a: </strong><?php echo date("d/m/Y", strtotime($model->date));?></p>
+		<p><strong>Lugar: </strong><?php echo CHtml::encode($model->place); ?></p>
+		<p><strong><?php echo $model->afaDate?> &#170 Fecha</strong></p>
+	</div>
+</div>

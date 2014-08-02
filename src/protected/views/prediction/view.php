@@ -47,4 +47,3 @@ $this->menu=array(
 		<p><span class="label label-success"><strong>Puntos:&nbsp;</strong><?php echo $model->score; ?></span></p>
 	</div>
 </div>
-

@@ -36,6 +36,8 @@ class LoginForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
+			'username'=>'e-mail',
+			'password'=>'Contrase&ntilde;a',
 			'rememberMe'=>'Recordarme',
 		);
 	}
@@ -49,8 +51,13 @@ class LoginForm extends CFormModel
 		if(!$this->hasErrors())
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
-			if(!$this->_identity->authenticate())
-				$this->addError('password','correo o contrase&ntilde;a incorrecta.');
+			if(!$this->_identity->authenticate()) {
+				if ($this->_identity->errorCode == UserIdentity::ERROR_USERNAME_INVALID) {
+					$this->addError('username','El mail es incorrecto o no esta activado');
+				} else {
+					$this->addError('password','Contrase&ntilde;a incorrecta');
+				} 
+			}		
 		}
 	}
 
