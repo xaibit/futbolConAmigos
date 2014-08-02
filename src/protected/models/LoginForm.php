@@ -53,10 +53,12 @@ class LoginForm extends CFormModel
 			$this->_identity=new UserIdentity($this->username,$this->password);
 			if(!$this->_identity->authenticate()) {
 				if ($this->_identity->errorCode == UserIdentity::ERROR_USERNAME_INVALID) {
-					$this->addError('username','El mail es incorrecto o no esta activado');
-				} else {
+					$this->addError('username','El mail es incorrecto');
+				} else if ($this->_identity->errorCode == UserIdentity::ERROR_PASSWORD_INVALID){
 					$this->addError('password','Contrase&ntilde;a incorrecta');
-				} 
+				} else {
+					$this->addError('username','La cuenta no ha sido activada');
+				}
 			}		
 		}
 	}

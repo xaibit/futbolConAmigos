@@ -7,6 +7,7 @@
  */
 class UserIdentity extends CUserIdentity
 {
+	const ERROR_ACCOUNT_DISABLED = 999;
 	private $id;
 	/**
 	 * Authenticates a user.
@@ -26,8 +27,10 @@ class UserIdentity extends CUserIdentity
 				$this->id=$user->idUser;            
 				$this->username=$user->nickname;      
 				$this->errorCode=self::ERROR_NONE;												
-			} else if ($user->score == null) {
+			} else if ($user->score != null) {
 				$this->errorCode=self::ERROR_PASSWORD_INVALID;
+			} else {
+				$this->errorCode=self::ERROR_ACCOUNT_DISABLED;
 			}
 		 } else {
 		 	$this->errorCode=self::ERROR_USERNAME_INVALID;
