@@ -41,15 +41,15 @@
 
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
 		<?php		
-			for ($i = 0; $i < 5; $i++):			
+			for ($i = 1; $i <= 5; $i++):			
 				$selected = $model->answer1;
 				$option = $model->ques1->getOption($i);
 				
 				if (isset($option)):?>
 					<label class="btn btn-default 
-					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
+					<?php echo (isset($selected) && $selected == ($i)) ? 'active' : ''; ?>">
 					<?php echo $form->radioButton($model,'answer1', 
-							array('value'=>$i, 'uncheckValue'=>-1)) . $option; ?>
+							array('value'=>($i), 'uncheckValue'=>null)) . $option; ?>
 					</label>
 				<?php endif;
 			endfor;		 
@@ -67,7 +67,7 @@
 
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
 		<?php		
-			for ($i = 0; $i < 5; $i++):			
+			for ($i = 0; $i <= 5; $i++):			
 				$selected = $model->answer2;
 				$option = $model->ques2->getOption($i);
 				
@@ -75,7 +75,7 @@
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
 					<?php echo $form->radioButton($model,'answer2', 
-							array('value'=>$i, 'uncheckValue'=>-1)) . $option; ?>
+							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
 					</label>
 				<?php endif;
 				
@@ -95,7 +95,7 @@
 	
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
 		<?php		
-			for ($i = 0; $i < 5; $i++):			
+			for ($i = 1; $i <= 5; $i++):			
 				$selected = $model->answer3;
 				$option = $model->ques3->getOption($i);
 				
@@ -103,7 +103,7 @@
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
 					<?php echo $form->radioButton($model,'answer3', 
-							array('value'=>$i, 'uncheckValue'=>-1)) . $option; ?>
+							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
 					</label>
 				<?php endif;
 			endfor;		 
@@ -121,7 +121,7 @@
 
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
 		<?php		
-			for ($i = 0; $i < 5; $i++):			
+			for ($i = 1; $i <= 5; $i++):			
 				$selected = $model->answer4;
 				$option = $model->ques4->getOption($i);
 				
@@ -129,7 +129,7 @@
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
 					<?php echo $form->radioButton($model,'answer4', 
-							array('value'=>$i, 'uncheckValue'=>-1)) . $option; ?>
+							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
 					</label>
 				<?php endif;
 			endfor;		 
@@ -147,7 +147,7 @@
 
 	<div class="btn-group btn-group-justified" data-toggle="buttons">
 		<?php		
-			for ($i = 0; $i < 5; $i++):			
+			for ($i = 1; $i <= 5; $i++):			
 				$selected = $model->answer5;
 				$option = $model->ques5->getOption($i);
 				
@@ -155,7 +155,7 @@
 					<label class="btn btn-default 
 					<?php echo (isset($selected) && $selected == $i) ? 'active' : ''; ?>">
 					<?php echo $form->radioButton($model,'answer5', 
-							array('value'=>$i, 'uncheckValue'=>-1)) . $option; ?>
+							array('value'=>$i, 'uncheckValue'=>null)) . $option; ?>
 					</label>
 				<?php endif;
 			endfor;		 
@@ -165,7 +165,8 @@
 	<?php }//end if question setted ?>
 	
 	<?php echo $form->hiddenField($model,'user'); ?>	
-	<?php echo $form->hiddenField($model,'match'); ?>	
+	<?php echo $form->hiddenField($model,'match'); ?>
+	<?php echo $form->hiddenField($model,'score'); ?>		
 
 	<div class="form-group">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar', array('class'=>'btn btn-default')); ?>

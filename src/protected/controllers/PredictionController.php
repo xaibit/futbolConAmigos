@@ -65,6 +65,7 @@ class PredictionController extends Controller
 		$model=new Prediction;
 		$model->match = $id;
 		$model->user = Yii::app()->user->id;
+		$model->score = 0;
 		$match = Match::model()->findByPk($id);
 		$questions = $match->questions;
 		$model->question1 = isset($questions[0]) ? $questions[0]->idQuestion : null;
