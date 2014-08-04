@@ -10,7 +10,7 @@
 
 <!-- Bootstrap -->
 <link
-	href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap/css/bootstrap.css"
+	href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap/css/bootstrap-flatly.min.css"
 	rel="stylesheet" type="text/css">
 
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css"
