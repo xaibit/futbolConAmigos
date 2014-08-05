@@ -79,7 +79,7 @@ class UserController extends Controller
 				$command = Yii::app()->db->createCommand($sql);
 				$command->execute();				
 				
-				$título = 'Confirmacion de correo';
+				$titulo = 'Confirmacion de correo';
 				// mensaje
 				$mensaje = 'Presiona <a href="http://www.palpitofutbolero.com.ar/index.php/user/confirm/' . $model->idUser . '">aqui</a> para confirmar tu cuenta de correo. Si no funciona el link, copia y pega la siguiente URL en tu navegador<br />www.palpitofutbolero.com.ar/index.php/user/confirm/' . $model->idUser ;
 				// Para enviar un correo HTML, debe establecerse la cabecera Content-type
@@ -89,7 +89,7 @@ class UserController extends Controller
 				// Cabeceras adicionales				
 				$cabeceras .= 'From: palpitofutbolero <palpitofutbolero@gmail.com>' . "\r\n";				
 				// Enviarlo
-				mail($email, $título, $mensaje, $cabeceras);
+				mail($email, $titulo, $mensaje, $cabeceras);
 				$this->redirect(array('site/confirmar'));
 			}	
 		}

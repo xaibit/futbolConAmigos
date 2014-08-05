@@ -57,13 +57,24 @@ class SiteController extends Controller
 			$model->attributes=$_POST['ContactForm'];
 			if($model->validate())
 			{
-				$mail = new YiiMailer();
+				/*$mail = new YiiMailer();
 				//$mail->clearLayout();//if layout is already set in config
 				$mail->setFrom($model->email, $model->name);
 				$mail->setTo(Yii::app()->params['adminEmail']);
 				$mail->setSubject($model->subject);
 				$mail->setBody($model->email . ': ' . $model->body);
-				$mail->send();
+				$mail->send();*/
+				
+				
+				// Para enviar un correo HTML, debe establecerse la cabecera Content-type
+				$headers  = 'MIME-Version: 1.0' . "\r\n";
+				$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+				
+				// Cabeceras adicionales
+				$headers .= 'From: '. $model->name . ' <'. $model->email . '>' . "\r\n";
+				// Enviarlo
+				mail(Yii::app()->params['adminEmail'], $model->subject, $model->email . " escribio " . $model->body, $headers);
+				
 				Yii::app()->user->setFlash('contact','Gracias por contactarse con nosotros. Estaremos respondi&eacute;ndole tan pronto como nos sea posible.');
 				$this->refresh();
 			}
