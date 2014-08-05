@@ -17,6 +17,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background:url(../../images/fondo.jpg) repeat;
 }
 .footer {
   position: absolute;
