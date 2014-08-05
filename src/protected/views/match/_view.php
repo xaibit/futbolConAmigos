@@ -14,10 +14,24 @@
 	 */ 
 ?>
 <?php 
-	$url = empty($data->predictions) ? array('match/view', 'id'=>$data->idMatch) : array('prediction/view', 'id'=>$data->predictions[0]->idPrediction);
+	$url;
+	$icon;
+	if (empty($data->predictions)) {
+		$url = array('match/view', 'id'=>$data->idMatch);
+		$icon = 'glyphicon-minus';
+	} else {
+		$url = array('prediction/view', 'id'=>$data->predictions[0]->idPrediction);
+		$icon = 'glyphicon-remove';
+	}
 	
 	if ((strtotime($data->date) - time()) >= (60 * 60)) {
-		$url = empty($data->predictions) ? array('prediction/create', 'id'=>$data->idMatch) : array('prediction/update', 'id'=>$data->predictions[0]->idPrediction);	
+		if (empty($data->predictions)) {
+			$url = array('prediction/create', 'id'=>$data->idMatch);
+			$icon = 'glyphicon-certificate';
+		} else {
+			$url = array('prediction/update', 'id'=>$data->predictions[0]->idPrediction);
+			$icon = 'glyphicon-edit';
+		}		
 	} 
 	
 ?>
@@ -29,4 +43,4 @@
 		. '" src="' . Yii::app()->request->baseUrl . '/images/escudos/' 
 		. $data->visitantTeam0->image .'"></h4>'
 		. '<p class="list-group-item-text">' . date('d/m/Y', strtotime($data->date))
-		. ' - ' . $data->afaDate . '&#170; Fecha<span class="glyphicon glyphicon-chevron-right pull-right"></span></p>', $url, array('class'=>'list-group-item')); ?>
+		. ' - ' . $data->afaDate . '&#170; Fecha<span class="glyphicon ' . $icon . ' pull-right"></span></p>', $url, array('class'=>'list-group-item')); ?>

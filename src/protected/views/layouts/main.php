@@ -37,9 +37,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">
-					<?php echo CHtml::encode(Yii::app()->name); ?>
-				</a>
+				<a class="navbar-brand" href="#">P&aacute;lpito Futbolero</a>
 			</div>
 			<div class="navbar-collapse collapse">
 			<?php		
