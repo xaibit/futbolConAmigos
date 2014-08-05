@@ -78,27 +78,18 @@ class UserController extends Controller
 				$sql = 'INSERT INTO usergroup VALUES (null,'.$id.',1,0,0,0)';
 				$command = Yii::app()->db->createCommand($sql);
 				$command->execute();				
-				/* $message            = new YiiMailMessage;
-				   //this points to the file test.php inside the view path
-				$message->view = "test";
-				$sid                 = $id;
-				$criteria            = new CDbCriteria();
-				$criteria->condition = "id=".$sid."";            
-				$user          = User::model()->findByPk($sid);        
-				$params              = array('usermail'=>$user);
-				$message->subject    = 'Validacion de correo';
-				$message->setBody($params, 'text/html');                
-				$message->addTo($email);
-				$message->from = 'contacto@tecomento.com.ar';				   
-				Yii::app()->mail->send($message);*/
-				$mail = new YiiMailer();
-				//$mail->clearLayout();//if layout is already set in config
-				//$mail->setFrom($model->email, $model->name);
 				
-				$mail->setTo($model->email);
-				$mail->setSubject('Validacion de Correo');
-				$mail->setBody('Presiona <a href="http://www.palpitofutbolero.com.ar/index.php/user/confirm/' . $model->idUser . '">aqui</a> para confirmar tu cuenta de correo. Si no funciona el link, copia y pega la siguiente URL en tu navegador<br />www.palpitofutbolero.com.ar/index.php/user/confirm/' . $model->idUser );
-				$mail->send();
+				$título = 'Confirmacion de correo';
+				// mensaje
+				$mensaje = 'Presiona <a href="http://www.palpitofutbolero.com.ar/index.php/user/confirm/' . $model->idUser . '">aqui</a> para confirmar tu cuenta de correo. Si no funciona el link, copia y pega la siguiente URL en tu navegador<br />www.palpitofutbolero.com.ar/index.php/user/confirm/' . $model->idUser ;
+				// Para enviar un correo HTML, debe establecerse la cabecera Content-type
+				$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+				$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+				// Cabeceras adicionales				
+				$cabeceras .= 'From: palpitofutbolero <palpitofutbolero@gmail.com>' . "\r\n";				
+				// Enviarlo
+				mail($email, $título, $mensaje, $cabeceras);
 				$this->redirect(array('site/confirmar'));
 			}	
 		}
