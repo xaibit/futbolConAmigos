@@ -37,13 +37,13 @@ class SiteController extends Controller
 	 */
 	public function actionError()
 	{
-		if($error=Yii::app()->errorHandler->error)
-		{
-			if(Yii::app()->request->isAjaxRequest)
-				echo $error['message'];
-			else
-				$this->render('error', $error);
-		}
+	    if($error=Yii::app()->errorHandler->error)
+	    {
+	    	if(Yii::app()->request->isAjaxRequest)
+	    		echo $error['message'];
+	    	else
+	        	$this->render('error', $error);
+	    }
 	}
 
 	/**
@@ -57,14 +57,20 @@ class SiteController extends Controller
 			$model->attributes=$_POST['ContactForm'];
 			if($model->validate())
 			{
-				$mail = new YiiMailer();
-				//$mail->clearLayout();//if layout is already set in config
+				//use 'contact' view from views/mail
+				$mail = new YiiMailer('contact', array('message' => $model->body, 'name' => $model->name, 'description' => 'Contact form'));
+				
+				//set properties
 				$mail->setFrom($model->email, $model->name);
-				$mail->setTo(Yii::app()->params['adminEmail']);
 				$mail->setSubject($model->subject);
-				$mail->setBody($model->email . ': ' . $model->body);
-				$mail->send();
-				Yii::app()->user->setFlash('contact','Gracias por contactarse con nosotros. Estaremos respondi&eacute;ndole tan pronto como nos sea posible.');
+				$mail->setTo(Yii::app()->params['adminEmail']);
+				//send
+				if ($mail->send()) {
+					Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
+				} else {
+					Yii::app()->user->setFlash('error','Error while sending email: '.$mail->getError());
+				}
+				
 				$this->refresh();
 			}
 		}
@@ -91,7 +97,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect(array('match/index'));
+				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -104,33 +110,5 @@ class SiteController extends Controller
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
-	}
-	/**
-	 * This is the default 'index' action that is invoked
-	 * when an action is not explicitly requested by users.
-	 */
-	public function actionConfirmar()
-	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		
-		$this->layout = 'main';
-		$this->render('confirmar');
-	}
-	/**
-	* funcion para activar correo
-	*/
-	public function actionActivatemail($id,$verificationcode)
-    { 
-		$key = 525325.24;
-			
-		//$decrypt=base64_decode($verificationcode);
-
-		$decrypt=$verificationcode / $key; 
-		
-		$model=User::model()->findByPk($id);
-		$model->activo = 1;
-		if($model->save())
-				$this->redirect(array('user/login','id'=>$model->id));		
 	}
 }

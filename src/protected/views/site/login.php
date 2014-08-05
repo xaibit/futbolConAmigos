@@ -39,7 +39,7 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="form-group">
-		<?php echo CHtml::submitButton('Login', array('class'=>'btn btn-default')); ?>
+		<?php echo CHtml::submitButton('Login', array('class'=>'btn btn-primary')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

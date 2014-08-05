@@ -5,7 +5,7 @@
 <li class="list-group-item">
 	<div class="row">
 		<div class="col-md-6">
-			<?php echo CHtml::encode($data->player->lastname . ', ' . $data->player->name); ?>
+			<?php echo CHtml::encode($data->player->nickname); ?>
 		</div>
 		<div class="col-md-2">
 			<?php echo isset($data->score) ? $data->score : '0'; ?>

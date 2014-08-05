@@ -59,7 +59,7 @@ $('#players-list').on('click', '.btn-reject', function(e) {
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-6">
-								<strong>Apellido y Nombre</strong>
+								<strong>Usuario</strong>
 							</div>
 							<div class="col-md-2">
 								<strong>Puntos</strong>

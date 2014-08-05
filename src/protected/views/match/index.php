@@ -15,6 +15,15 @@ $this->menu=array(
 <div class="page-header">
 	<h1>Partidos</h1>
 </div>
+<div class="alert alert-info alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert">
+		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+	</button>
+	En esta secci&oacute;n se listan todos los partidos a predecir, y
+	haciendo click en cada uno pod&eacute;s predecir o editar la
+	predicci&oacute;n que hayas realizado anteriormente (siempre y cuando
+	no falte menos de una hora para el inicio del partido).
+</div>
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
 	<?php
@@ -37,7 +46,7 @@ $this->menu=array(
 		$i = 0;
 		foreach ($competitions as $competition) { 
 	?>
-	<div class="tab-pane fade<?php echo ($i==0) ? " in active" : ""; ?>" 
+	<div class="tab-pane fade<?php echo ($i==0) ? " in active" : ""; ?>"
 		id="<?php echo 'tab-'. $i; ?>">
 		<div class="panel panel-default inner-panel">
 			<?php
@@ -64,8 +73,10 @@ $this->menu=array(
 				));
 			?>
 			
-		</div><!-- panel -->			
-	</div><!-- tab-pane -->
+		</div>
+		<!-- panel -->
+	</div>
+	<!-- tab-pane -->
 	<?php 
 			$i++;
 		} 

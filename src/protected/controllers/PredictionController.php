@@ -97,20 +97,25 @@ class PredictionController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		//if I am the owner of prediction		
+		if ($model->user == Yii::app()->user->id) {
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Prediction']))
-		{
-			$model->attributes=$_POST['Prediction'];
-			if($model->save())
-				$this->redirect(array('match/index'));
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+	
+			if(isset($_POST['Prediction']))
+			{
+				$model->attributes=$_POST['Prediction'];
+				if($model->save())
+					$this->redirect(array('match/index'));
+			}
+	
+			$this->render('update',array(
+				'model'=>$model,
+			));
+		} else {
+			throw new CHttpException(403,'Tu no has realizado esta prediccion');
 		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
 	}
 
 	/**

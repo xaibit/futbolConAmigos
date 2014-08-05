@@ -55,8 +55,9 @@
 						array('label'=>'Jugadores', 'url'=>array('/player/index'), 'visible'=>!Yii::app()->user->isGuest),
 						array('label'=>'Usuario-Grupo', 'url'=>array('/usergroup/index'), 'visible'=>!Yii::app()->user->isGuest),
 						array('label'=>'Competicion', 'url'=>array('/competition/index'), 'visible'=>!Yii::app()->user->isGuest),*/
-						array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about'), 'visible'=>Yii::app()->user->isGuest),
+						array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Contacto', 'url'=>array('/site/contact')),
+						array('label'=>'Ayuda&nbsp;<span class="glyphicon glyphicon-question-sign"></span>', 'url'=>array('/site/page', 'view'=>'help'), 'visible'=>!Yii::app()->user->isGUest),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 					),
@@ -64,7 +65,8 @@
 								'class' => 'nav navbar-nav' 
 					),
 					'activeCssClass' => 'active',
-					'itemCssClass' => ''
+					'itemCssClass' => '',
+					'encodeLabel'=>false
 				)); 
 			?>
 			</div>

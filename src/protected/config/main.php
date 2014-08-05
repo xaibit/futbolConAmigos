@@ -16,6 +16,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'ext.YiiMailer.YiiMailer'
 	),
 
 	'modules'=>array(
@@ -48,7 +49,7 @@ return array(
 			),
 		),
 		// uncomment the following to use a MySQL database
-		'mail' => array(
+		/*'mail' => array(
                 'class' => 'ext.yii-mail.YiiMail',
                 'transportType'=>'smtp',
                 'transportOptions'=>array(
@@ -58,7 +59,7 @@ return array(
                         'port'=>'2525',                       
                 ),
                 'viewPath' => 'application.views.mail',             
-        ),
+        ),*/
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=futbolconamigos',
 			'emulatePrepare' => true,
@@ -123,6 +124,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'palpitofutbolero@gmail.com',
 	),
 );

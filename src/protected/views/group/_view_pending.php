@@ -5,7 +5,7 @@
 <li class="list-group-item pending">
 	<div class="row">
 		<div class="col-md-4">
-			<?php echo CHtml::encode($data->lastname . ', ' . $data->name); ?>
+			<?php echo CHtml::encode($data->nickname); ?>
 		</div>
 		<div class="col-md-2 col-md-offset-6">		
 			<?php

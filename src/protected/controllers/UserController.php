@@ -78,7 +78,7 @@ class UserController extends Controller
 				$sql = 'INSERT INTO usergroup VALUES (null,'.$id.',1,0,0,0)';
 				$command = Yii::app()->db->createCommand($sql);
 				$command->execute();				
-				 $message            = new YiiMailMessage;
+				/* $message            = new YiiMailMessage;
 				   //this points to the file test.php inside the view path
 				$message->view = "test";
 				$sid                 = $id;
@@ -89,8 +89,16 @@ class UserController extends Controller
 				$message->subject    = 'Validacion de correo';
 				$message->setBody($params, 'text/html');                
 				$message->addTo($email);
-				$message->from = 'contacto@tecomento.com.ar';   
-				Yii::app()->mail->send($message);   
+				$message->from = 'contacto@tecomento.com.ar';				   
+				Yii::app()->mail->send($message);*/
+				$mail = new YiiMailer();
+				//$mail->clearLayout();//if layout is already set in config
+				//$mail->setFrom($model->email, $model->name);
+				
+				$mail->setTo($model->email);
+				$mail->setSubject('Validacion de Correo');
+				$mail->setBody('Presiona <a href="http://www.palpitofutbolero.com.ar/index.php/user/confirm/' . $model->idUser . '">aqui</a> para confirmar tu cuenta de correo. Si no funciona el link, copia y pega la siguiente URL en tu navegador<br />www.palpitofutbolero.com.ar/index.php/user/confirm/' . $model->idUser );
+				$mail->send();
 				$this->redirect(array('site/confirmar'));
 			}	
 		}

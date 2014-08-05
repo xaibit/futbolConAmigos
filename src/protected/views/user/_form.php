@@ -47,7 +47,7 @@
 					'minDate' => '1930-01-01',      // minimum date
 					'maxDate' => '2025-12-31',      // maximum date
 				),                     // jquery plugin options
-                'htmlOptions'=>array('readonly'=>true) // HTML options
+                'htmlOptions'=>array('readonly'=>true, 'class'=>'form-control') // HTML options
         ));                             
         ?> 
 		<?php echo $form->error($model,'born'); ?>
@@ -79,7 +79,7 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'male'); ?>
-		<?php echo $form->dropDownList($model,'male',array('0'=>'Mujer','1'=>'Hombre')); ?>
+		<?php echo $form->dropDownList($model,'male',array('0'=>'Mujer','1'=>'Hombre'), array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'male', array('class'=>'text-danger')); ?>		
 	</div>		
 	
@@ -95,7 +95,7 @@
 		<?php echo $form->error($model,'password', array('class'=>'text-danger')); ?>
 	</div>
 	<div class="form-group">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrarse' : 'Guardar', array('class'=>'btn btn-default')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrarse' : 'Guardar', array('class'=>'btn btn-primary')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

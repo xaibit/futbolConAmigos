@@ -68,7 +68,7 @@ $this->breadcrumbs=array(
 	<?php endif; ?>
 
 	<div class="form-group">
-		<?php echo CHtml::submitButton('Enviar', array('class'=>'btn btn-default')); ?>
+		<?php echo CHtml::submitButton('Enviar', array('class'=>'btn btn-primary')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
