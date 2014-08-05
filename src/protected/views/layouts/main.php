@@ -59,7 +59,9 @@
 						array('label'=>'Contacto', 'url'=>array('/site/contact')),
 						array('label'=>'Ayuda&nbsp;<span class="glyphicon glyphicon-question-sign"></span>', 'url'=>array('/site/page', 'view'=>'help'), 'visible'=>!Yii::app()->user->isGUest),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-						array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+						array('label'=>'Mi perfil', 'url'=>array('/user/update','id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
+						array('label'=>'Salir', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+						
 					),
 					'htmlOptions' => array (
 								'class' => 'nav navbar-nav' 
