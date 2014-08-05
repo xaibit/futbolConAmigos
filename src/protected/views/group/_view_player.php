@@ -12,7 +12,7 @@
 		</div>
 		<div class="col-md-4">		
 			<?php 
-				if ($data->grouprel->userAdmin == Yii::app()->user->id) {
+				if ($data->grouprel->userAdmin == Yii::app()->user->id && Yii::app()->user->id != $data->user) {
 					echo CHtml::button( 'Expulsar', array(
 						'class' => 'btn btn-danger btn-reject',
 						'data-toggle' => 'modal',

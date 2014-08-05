@@ -87,8 +87,15 @@ class GroupController extends Controller
 		if(isset($_POST['Group']))
 		{
 			$model->attributes=$_POST['Group'];
-			if($model->save())
+			if($model->save()) {
+				$usergroup = new Usergroup();
+				$usergroup->adminPending = 0;
+				$usergroup->userPending = 0;
+				$usergroup->user = Yii::app()->user->id;
+				$usergroup->group = $model->idGroup;
+				$usergroup->save();
 				$this->redirect(array('view','id'=>$model->idGroup));
+			}
 		}
 
 		$this->render('create',array(
