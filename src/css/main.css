@@ -80,3 +80,12 @@ form .btn-group, form .row {
 	border-top-width: 0;
 	border-radius: 0 4px;
 }
+form {
+	background:white;
+	padding:10px;
+	border-radius:5px;
+	margin-bottom:5px;
+}
+.nav-tabs>li>a {
+	background:#ecf0f1;
+}
