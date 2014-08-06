@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<div class="page-header"><h1>&#191;Cu&aacute;l es tu palpito?</h1></div>
+<div class="page-header"><h1>&#191;Cu&aacute;l es tu p&aacute;lpito?</h1></div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
