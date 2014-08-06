@@ -43,7 +43,7 @@
 			<?php		
 				$this->widget('zii.widgets.CMenu',array(
 					'items'=>array(
-						array('label'=>'Home', 'url'=>array('/site/index'), 'visible'=>Yii::app()->user->isGuest),
+						array('label'=>'Inicio', 'url'=>array('/site/index'), 'visible'=>Yii::app()->user->isGuest),
 						/*array('label'=>'Usuarios', 'url'=>array('/user/index'), 'visible'=>!Yii::app()->user->isGuest),*/
 						array('label'=>'Grupos', 'url'=>array('/group/index'), 'visible'=>!Yii::app()->user->isGuest),
 						array('label'=>'Partidos', 'url'=>array('/match/index'), 'visible'=>!Yii::app()->user->isGuest),
@@ -56,7 +56,7 @@
 						array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Contacto', 'url'=>array('/site/contact')),
 						array('label'=>'Ayuda&nbsp;<span class="glyphicon glyphicon-question-sign"></span>', 'url'=>array('/site/page', 'view'=>'help'), 'visible'=>!Yii::app()->user->isGUest),
-						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+						array('label'=>'Ingresar', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Mi perfil', 'url'=>array('/user/update','id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
 						array('label'=>'Salir', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 						
