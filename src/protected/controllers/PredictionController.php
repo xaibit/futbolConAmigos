@@ -114,7 +114,7 @@ class PredictionController extends Controller
 				'model'=>$model,
 			));
 		} else {
-			throw new CHttpException(403,'Tu no has realizado esta prediccion');
+			throw new CHttpException(403,'Tu no has realizado este p&aacute;lpito');
 		}
 	}
 

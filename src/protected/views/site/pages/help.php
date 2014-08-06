@@ -44,8 +44,8 @@ $this->breadcrumbs=array(
 		</div>
 		<div id="points" class="panel-collapse collapse">
 			<div class="panel-body">
-				Para calcular los puntos se har&aacute; una sumatoria entre las
-				diferentes predicciones:
+				Para calcular los puntos se har&aacute; una sumatoria entre los
+				distintos p&aacute;lpitos:
 				<ul>
 					<li>3 puntos por cada resultado acertado.</li>
 					<li>1 punto por acertar qui&eacute;n gana o si empatan (En caso de

@@ -48,7 +48,7 @@
 						array('label'=>'Grupos', 'url'=>array('/group/index'), 'visible'=>!Yii::app()->user->isGuest),
 						array('label'=>'Partidos', 'url'=>array('/match/index'), 'visible'=>!Yii::app()->user->isGuest),
 						/*array('label'=>'Preguntas', 'url'=>array('/question/index'), 'visible'=>!Yii::app()->user->isGuest),*/
-						array('label'=>'Predicciones', 'url'=>array('/prediction/index'), 'visible'=>!Yii::app()->user->isGuest),
+						array('label'=>'P&aacute;lpitos', 'url'=>array('/prediction/index'), 'visible'=>!Yii::app()->user->isGuest),
 						/*array('label'=>'Equipos', 'url'=>array('/team/index'), 'visible'=>!Yii::app()->user->isGuest),
 						array('label'=>'Jugadores', 'url'=>array('/player/index'), 'visible'=>!Yii::app()->user->isGuest),
 						array('label'=>'Usuario-Grupo', 'url'=>array('/usergroup/index'), 'visible'=>!Yii::app()->user->isGuest),
