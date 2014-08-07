@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 	'Groups'=>array('index'),
 	$model->name,
 );
-
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/grupoView.js');
 $this->menu=array(
 	array('label'=>'List Group', 'url'=>array('index')),
 	array('label'=>'Create Group', 'url'=>array('create')),
@@ -131,6 +131,3 @@ $('#players-list').on('click', '.btn-reject', function(e) {
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-<script>	
-	$('#pendingNumber').text($('#pending-list pending').length());
-</script>
