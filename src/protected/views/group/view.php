@@ -48,7 +48,7 @@ $('#players-list').on('click', '.btn-reject', function(e) {
 			</li>
 			<?php if (Yii::app()->user->id == $model->userAdmin): ?>
 			<li>
-				<a href="#pending" role="tab" data-toggle="tab">Pendientes de Aprobaci&oacute;n</a>
+				<a href="#pending" role="tab" data-toggle="tab">Pendientes de Aprobaci&oacute;n (<span id="pendingNumber"></span>)</a>
 			</li>
 			<?php endif;?>
 		</ul>
@@ -131,3 +131,6 @@ $('#players-list').on('click', '.btn-reject', function(e) {
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+<script>	
+	$('#pendingNumber').text($('#pending-list pending').length());
+</script>
