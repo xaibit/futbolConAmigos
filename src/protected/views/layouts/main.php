@@ -57,13 +57,29 @@
 						array('label'=>'Contacto', 'url'=>array('/site/contact')),
 						array('label'=>'Ayuda&nbsp;<span class="glyphicon glyphicon-question-sign"></span>', 'url'=>array('/site/page', 'view'=>'help'), 'visible'=>!Yii::app()->user->isGUest),
 						array('label'=>'Ingresar', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-						array('label'=>'Mi perfil', 'url'=>array('/user/update','id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
-						array('label'=>'Salir', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+						// array('label'=>'Mi perfil', 'url'=>array('/user/update','id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
+						// array('label'=>'Salir', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+						array(
+							'label'=>'Mi Perfil', 
+							'url'=>'#',
+							'visible'=>!Yii::app()->user->isGuest,
+							'items'=>array(
+					            array('label'=>'Editar', 'url'=>array('/user/update','id'=>Yii::app()->user->id)),
+					            array('label'=>'Salir', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+						    ),
+						    'linkOptions'=> array(
+	                            'class' => 'dropdown-toggle',
+	                            'data-toggle' => 'dropdown',
+                            ),
+						),
 						
 					),
 					'htmlOptions' => array (
-								'class' => 'nav navbar-nav' 
+						'class' => 'nav navbar-nav' 
 					),
+					'submenuHtmlOptions' => array(
+				       'class' => 'dropdown-menu',
+				     ),
 					'activeCssClass' => 'active',
 					'itemCssClass' => '',
 					'encodeLabel'=>false
