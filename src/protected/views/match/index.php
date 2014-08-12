@@ -19,11 +19,18 @@ $this->menu=array(
 	<button type="button" class="close" data-dismiss="alert">
 		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 	</button>
-	En esta secci&oacute;n se listan todos los partidos a predecir:<br>
-	<span class="glyphicon glyphicon-certificate"></span><strong>: Puedes palpitar el partido.</strong><br>
-	<span class="glyphicon glyphicon-edit"></span><strong>: Puedes modificar el p&aacute;lpito realizado.</strong><br>
-	<span class="glyphicon glyphicon-remove"></span><strong>: No puedes modificar el p&aacute;lpito realizado.</strong><br>
-	<span class="glyphicon glyphicon-minus"></span><strong>: El partido ya se realiz&oacute; y no lo has palpitado.</strong>
+	En esta secci&oacute;n se listan todos los partidos a predecir, y
+	haciendo click en cada uno podr&aacute;s predecir o editar la
+	predicci&oacute;n que hayas realizado anteriormente. Recuerda que
+	puedes editarlo hasta una hora antes del inicio del partido.<br> 
+	<span class="glyphicon glyphicon-certificate"></span>
+	<strong>: Puedes palpitar el partido.</strong><br> 
+	<span class="glyphicon glyphicon-edit"></span>
+	<strong>: Puedes modificar el p&aacute;lpito realizado.</strong><br> 
+	<span class="glyphicon glyphicon-remove"></span>
+	<strong>: No puedes modificar el p&aacute;lpito realizado.</strong><br> 
+	<span class="glyphicon glyphicon-minus"></span>
+	<strong>: El partido ya se realiz&oacute; y no lo has palpitado.</strong>
 </div>
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">

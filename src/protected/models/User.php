@@ -46,18 +46,19 @@ class User extends CActiveRecord
 			array('email', 'length', 'max'=>200),
 			array('male', 'length', 'max'=>1),
 			array('email', 'required'),
-			array('password', 'required'),
+			array('password', 'required', 'on'=>'insert'),
 			array('nickname', 'required'),
 			array('name', 'required'),
 			array('lastname', 'required'),	
 			array('born', 'safe'),
 			array('dni', 'length', 'max'=>15),
+			array('born', 'default', 'setOnEmpty' => true, 'value' => null),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('idUser, name, lastname, born, email, state, city, nickname, score, male, password, dni', 'safe', 'on'=>'search'),
 			array('email', 'unique', 'message' => '{attribute}: {value} ya existe.'),
 			array('nickname', 'unique', 'message' => '{attribute}: {value} ya existe.'),
-			array('email', 'email')
+			array('email', 'email')			
 		);
 	}
 

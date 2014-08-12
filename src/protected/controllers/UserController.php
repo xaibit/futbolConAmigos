@@ -124,7 +124,7 @@ class UserController extends Controller
 				}				
 			}
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idUser));
+				$this->redirect(array('match/index'));
 		}
 
 		$this->render('update',array(
