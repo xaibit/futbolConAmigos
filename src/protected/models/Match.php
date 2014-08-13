@@ -25,6 +25,7 @@
  */
 class Match extends CActiveRecord
 {
+	const RESULT_OK = 3;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -129,5 +130,23 @@ class Match extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function getPoints($localGoals, $visitantGoals)
+	{
+		$result = 0;
+		if (isset($this->localGoals) && isset($this->visitantGoals) && isset($localGoals)
+			&& isset($this->visitantGoals)) {
+			
+			if ($localGoals == $this->localGoals && $visitantGoals == $this->visitantGoals) {
+				$result += Match::RESULT_OK;
+			} else if (($this->localGoals > $this->visitantGoals && $localGoals > $visitantGoals)
+			|| (($this->localGoals == $this->visitantGoals && $localGoals == $visitantGoals)) 
+			|| ($this->localGoals < $this->visitantGoals && $localGoals < $visitantGoals)) {//gano
+				$result += 1;
+			}
+		}
+
+		return $result;
 	}
 }

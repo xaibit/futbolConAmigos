@@ -160,4 +160,20 @@ class User extends CActiveRecord
 		else
 			return false;
 	}
+	
+	public function calculatePoints($matchs)
+	{
+		$predictions = $this->predictions;
+		$total = 0;
+		 
+		foreach ($predictions as $prediction) {
+			if (in_array($prediction->match, $matchs)) {
+				$total += $prediction->calculatePoints();
+				var_dump('usuario: ' . $this->idUser . ' partido: ' . $prediction->match . ' puntos: ' . $total);
+			}			
+		}
+		$this->score += $total;
+		$this->save();	
+		return $this->score;	
+	}
 }

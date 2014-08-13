@@ -122,6 +122,9 @@ class UserController extends Controller
 					$salt = '$2y$11$' . substr(md5(uniqid(rand(), true)), 0, 22);
 					$model->password = crypt($model->password, $salt);
 				}				
+			} else {
+				$user = $this->loadModel($id);
+				$model->password = $user->password;//load previous password
 			}
 			if($model->save())
 				$this->redirect(array('match/index'));

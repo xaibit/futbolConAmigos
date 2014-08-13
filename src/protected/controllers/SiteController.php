@@ -144,4 +144,24 @@ class SiteController extends Controller
 		if($model->save())
 				$this->redirect(array('user/login','id'=>$model->id));		
 	}
+	/**
+	 *
+	 */
+	public function actionCalculatePoints($id)
+	{
+		$users = User::model()->findAll();
+		$allMatchs = Match::model()->findAll('afaDate='.$id);
+		
+		$matchs = array();
+		// alguna funcion PHP que lo haga???				
+		foreach ($allMatchs as $match) {
+			array_push($matchs, $match['idMatch']);
+		}
+				
+		foreach ($users as $user) {
+			$total = $user->calculatePoints($matchs);
+			//actualizo el puntaje del usuario para todos los grupos
+			Usergroup::model()->updateAll(array('score'=>$total), 'user='.$user->idUser);
+		}
+	}
 }

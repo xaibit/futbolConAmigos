@@ -93,6 +93,8 @@ class GroupController extends Controller
 				$usergroup->userPending = 0;
 				$usergroup->user = Yii::app()->user->id;
 				$usergroup->group = $model->idGroup;
+				$user = User::model()->findByPk(Yii::app()->user->id);
+				$usergroup->score = $user->score;
 				$usergroup->save();
 				$this->redirect(array('view','id'=>$model->idGroup));
 			}

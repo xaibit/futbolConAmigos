@@ -175,4 +175,38 @@ class Prediction extends CActiveRecord
 			$this->addError($attribute, "Ya no puede completar el p&aacute;lpito para este partido");
 		}
 	}
+	
+	public function calculatePoints()
+	{
+		$total = 0;
+		$allAnsweredOk = true;
+		
+		$total += $this->getQuestionPoints($this->ques1, $this->answer1, $allAnsweredOk);		
+		$total += $this->getQuestionPoints($this->ques2, $this->answer2, $allAnsweredOk);
+		$total += $this->getQuestionPoints($this->ques3, $this->answer3, $allAnsweredOk);
+		$total += $this->getQuestionPoints($this->ques4, $this->answer4, $allAnsweredOk );
+		$total += $this->getQuestionPoints($this->ques5, $this->answer5, $allAnsweredOk );
+		
+		$result = $this->matchRel->getPoints($this->localGoals, $this->visitantGoals);
+		
+		//1 punto extra por acertar el resultado y todas las preguntas.
+		$total = ($result == Match::RESULT_OK && $allAnsweredOk) ? $result + $total + 1 : $result + $total;
+
+		//1 punto por cada respuesta acertada (si se aciertan todas las preguntas, se sumara un punto extra).
+		$total = ($allAnsweredOk) ? $total + 1 : $total;
+		return $total;
+	}
+	
+	private function getQuestionPoints($question, $answer, &$isOk)
+	{
+		$total = 0;
+		if (isset($question) && isset($answer)) {
+			$total = ($question->answerOK == $answer) ? intval($question->score) : 0;
+			$isOk = ($total != 0) ? $isOk && true : $isOk && false;
+		} else if (isset($question)) {//si hay pregunta pero el usuario no respondio
+			$isOk = $isOk && false;
+		}		
+		
+		return $total;
+	}
 }
