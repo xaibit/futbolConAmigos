@@ -67,7 +67,7 @@ $this->menu=array(
 									)
 								),								
 								'order'=>'date ASC',
-								'condition'=>'competition=:competition',
+								'condition'=>'competition=:competition AND afaDate = (SELECT MAX(afaDate) FROM `match`)',
 								'params'=>array(':competition'=>$competition->idCompetition)
 							),
 							'countCriteria'=>array()
