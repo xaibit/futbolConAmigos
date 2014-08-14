@@ -31,6 +31,18 @@ $('#popup-reject').on('click', '.btn-modal-ok', function(e) {
 $('#players-list').on('click', '.btn-reject', function(e) {
 	$('#popup-reject').attr('data-id', $(this).attr('data-id'));
 });
+var currentPage = $('.pagination').find('.active').text();
+if(currentPage == '1') {
+	$('#players-list').find('.list-group-item').first().addClass('primero');
+}		
+$('.pagination a').delegate('click',function(e){
+	setTimeout(function(){
+		var currentPage = $('.pagination').find('.active').text();
+		if(currentPage == '1') {
+			$('#players-list').find('.list-group-item').first().addClass('primero');
+		}		
+	},1000);
+});
 " );
 ?>
 <div class="panel panel-primary">
