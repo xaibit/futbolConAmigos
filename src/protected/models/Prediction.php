@@ -194,6 +194,9 @@ class Prediction extends CActiveRecord
 
 		//1 punto por cada respuesta acertada (si se aciertan todas las preguntas, se sumara un punto extra).
 		$total = ($allAnsweredOk) ? $total + 1 : $total;
+		$this->score = $total;
+		$this->save(false);
+		
 		return $total;
 	}
 	
