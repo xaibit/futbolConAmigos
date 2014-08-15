@@ -2,11 +2,13 @@
 /* @var $this GroupController */
 /* @var $model Group */
 
+  Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/grupoView.js');
+  
 $this->breadcrumbs=array(
 	'Groups'=>array('index'),
 	$model->name,
 );
-Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/grupoView.js');
+
 $this->menu=array(
 	array('label'=>'List Group', 'url'=>array('index')),
 	array('label'=>'Create Group', 'url'=>array('create')),
@@ -43,6 +45,7 @@ $('.pagination a').delegate('click',function(e){
 		}		
 	},1000);
 });
+
 " );
 ?>
 <div class="panel panel-primary">
@@ -70,13 +73,16 @@ $('.pagination a').delegate('click',function(e){
 				<div class="panel panel-default inner-panel">
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-2">
+								<strong>Posici&oacute;n</strong>
+							</div>
+							<div class="col-md-5">
 								<strong>Usuario</strong>
 							</div>
 							<div class="col-md-2">
 								<strong>Puntos</strong>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-3">
 								<strong>Acci&oacute;n</strong>
 							</div>
 						</div>

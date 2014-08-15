@@ -90,10 +90,11 @@ form {
 	background:#ecf0f1;
 }
 .list-group-item.primero {
-	background:#5dcbee url(../../images/primero.png) 2px 4px no-repeat;
-	padding-left:35px;
+	/*background:#5dcbee url(../../images/primero.png) 2px 4px no-repeat;
+	padding-left:35px;*/
+	background:#5dcbee;
 }
-.list-group-item.primero .col-md-6 {
+/*.list-group-item.primero .col-md-6 {
     width: 49%;
 	font-weight: bold;
-}
+}*/
