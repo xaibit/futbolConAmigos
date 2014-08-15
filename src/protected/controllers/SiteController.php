@@ -147,21 +147,43 @@ class SiteController extends Controller
 	/**
 	 *
 	 */
-	public function actionCalculatePoints($id)
+	public function actionCalculatePoints()
 	{
 		$users = User::model()->findAll();
-		$allMatchs = Match::model()->findAll('afaDate='.$id);
-		
-		$matchs = array();
-		// alguna funcion PHP que lo haga???				
-		foreach ($allMatchs as $match) {
-			array_push($matchs, $match['idMatch']);
-		}
-				
+						
 		foreach ($users as $user) {
-			$total = $user->calculatePoints($matchs);
+			$total = $user->calculatePoints();
 			//actualizo el puntaje del usuario para todos los grupos
 			Usergroup::model()->updateAll(array('score'=>$total), 'user='.$user->idUser);
 		}
+	}
+	
+	public function actionSendMails()
+	{
+		$model=new MailForm();
+		if(isset($_POST['MailForm']))
+		{
+			$model->attributes=$_POST['MailForm'];
+			if($model->validate())
+			{		
+				$headers  = 'MIME-Version: 1.0' . "\r\n";
+				$headers .= 'Content-type: text/plain; charset=UTF-8' . "\r\n";
+				// Cabeceras adicionales
+				$headers .= 'From: Palpito Futbolero <contacto@palpitofutbolero.com.ar>' . "\r\n";
+				// Enviarlo
+				$users = User::model()->findAll('nickname!="admin"');
+				$mails = array();
+				foreach ($users as $user) {
+					array_push($mails, $user->email);					
+				}
+				$headers .= 'Bcc: ' . implode(",", $mails) . "\r\n";	
+
+				$sent = mail(Yii::app()->params['adminEmail'], '=?UTF-8?B?'.base64_encode($model->subject).'?=', $model->body, $headers);
+				
+				Yii::app()->user->setFlash('mail','Los emails han sido enviados.');
+				$this->refresh();
+			}
+		}
+		$this->render('mail',array('model'=>$model));
 	}
 }
