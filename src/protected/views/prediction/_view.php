@@ -10,6 +10,9 @@
 <li class="list-group-item">
 	<div class="row">
 		<div class="col-md-1">
+			<span class="label label-default">Fecha <?php echo $data->matchRel->afaDate; ?></span>
+		</div>
+		<div class="col-md-1">
 			<span class="badge"><?php echo isset($data->localGoals) ? CHtml::encode($data->localGoals) : '-'; ?></span>
 			<img alt="<?php echo $data->matchRel->localTeam0->name; ?>"
 				src="<?php echo Yii::app()->request->baseUrl . '/images/escudos/' . $data->matchRel->localTeam0->image; ?>"
@@ -41,7 +44,7 @@
 				 ?>
 			 </strong>
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-1">
 			<?php echo isset($data->ques3) ? $data->ques3->text : ''; ?>
 			<strong>
 				<?php

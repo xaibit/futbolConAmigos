@@ -22,7 +22,7 @@
  * @property Prediction[] $predictions2
  * @property Prediction[] $predictions3
  * @property Prediction[] $predictions4
- * @property Match $match0
+ * @property Match $matchRel
  * @property Questionmatch[] $questionmatches
  */
 class Question extends CActiveRecord
@@ -66,7 +66,7 @@ class Question extends CActiveRecord
 			'predictionsQ3' => array(self::HAS_MANY, 'Prediction', 'question3'),
 			'predictionsQ4' => array(self::HAS_MANY, 'Prediction', 'question4'),
 			'predictionsQ5' => array(self::HAS_MANY, 'Prediction', 'question5'),
-			'match' => array(self::BELONGS_TO, 'Match', 'match'),
+			'matchRel' => array(self::BELONGS_TO, 'Match', 'match'),
 			'questionmatches' => array(self::HAS_MANY, 'Questionmatch', 'question'),
 		);
 	}
@@ -119,7 +119,7 @@ class Question extends CActiveRecord
 		$criteria->compare('score',$this->score,true);
 		$criteria->compare('bonus',$this->bonus);
 		$criteria->compare('answerOK',$this->answerOK);
-		$criteria->compare('match',$this->match);
+		$criteria->compare('t.match',$this->match);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

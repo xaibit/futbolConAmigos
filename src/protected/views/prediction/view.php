@@ -27,6 +27,11 @@ $this->menu=array(
 	</div>
 	<div class="panel-body">
 		<div class="row">
+			<?php if (isset($model->matchRel) && (!isset($model->matchRel->localGoals) || !isset($model->matchRel->visitantGoals))) { ?>
+			<div class="col-md-6">
+				<div class="alert alert-danger"><strong>Atenci&oacute;n!&nbsp;</strong>A&uacute;n no se ha cargado el resultado del partido.</div>
+			</div>
+			<?php } else { ?>
 			<div  class="col-md-6">
 			<p>
 			<?php echo isset($model->matchRel) ? '<strong>Resultado correcto:</strong> ' . $model->matchRel->localGoals . ' - ' . $model->matchRel->visitantGoals : ''?>
@@ -109,6 +114,7 @@ $this->menu=array(
 			</p>
 			<p><span class="label label-success"><strong>Puntos:&nbsp;</strong><?php echo $model->score; ?></span></p>
 			</div>
+			<?php } ?>
 			<div  class="col-md-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">Recordatorio</div>

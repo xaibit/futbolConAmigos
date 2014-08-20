@@ -60,6 +60,20 @@
 						// array('label'=>'Mi perfil', 'url'=>array('/user/update','id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
 						// array('label'=>'Salir', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 						array(
+							'label'=>'Configurar&nbsp;<span class="glyphicon glyphicon-cog"></span>',
+							'url'=>'#',
+							'visible'=>in_array(Yii::app()->user->name, array('admin', 'matute')),
+							'items'=>array(
+								array('label'=>'Enviar Mails&nbsp;<span class="glyphicon glyphicon-envelope"></span>', 'url'=>array('/site/sendmails')),
+								array('label'=>'Calcular Puntos&nbsp;<span class="glyphicon glyphicon-signal"></span>', 'url'=>array('/site/calculatepoints')),
+								array('label'=>'Preguntas&nbsp;<span class="glyphicon glyphicon-question-sign"></span>', 'url'=>array('/question/admin'))
+							),
+							'linkOptions'=> array(
+									'class' => 'dropdown-toggle',
+									'data-toggle' => 'dropdown',
+							),
+						),
+						array(
 							'label'=>'Mi Perfil', 
 							'url'=>'#',
 							'visible'=>!Yii::app()->user->isGuest,
@@ -71,8 +85,7 @@
 	                            'class' => 'dropdown-toggle',
 	                            'data-toggle' => 'dropdown',
                             ),
-						),
-						
+						),						
 					),
 					'htmlOptions' => array (
 						'class' => 'nav navbar-nav' 

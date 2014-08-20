@@ -172,14 +172,10 @@ class SiteController extends Controller
 				$headers .= 'From: Palpito Futbolero <contacto@palpitofutbolero.com.ar>' . "\r\n";
 				// Enviarlo
 				$users = User::model()->findAll('nickname!="admin"');
-				$mails = array();
-				foreach ($users as $user) {
-					array_push($mails, $user->email);					
-				}
-				$headers .= 'Bcc: ' . implode(",", $mails) . "\r\n";	
-
-				$sent = mail(Yii::app()->params['adminEmail'], '=?UTF-8?B?'.base64_encode($model->subject).'?=', $model->body, $headers);
 				
+				foreach ($users as $user) {
+					mail($user->email, '=?UTF-8?B?'.base64_encode($model->subject).'?=', $model->body, $headers);					
+				}
 				Yii::app()->user->setFlash('mail','Los emails han sido enviados.');
 				$this->refresh();
 			}

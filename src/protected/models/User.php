@@ -170,7 +170,7 @@ class User extends CActiveRecord
 			$total += $prediction->calculatePoints();
 			var_dump('usuario: ' . $this->idUser . ' partido: ' . $prediction->match . ' puntos: ' . $total);						
 		}
-		$this->score += $total;
+		$this->score = $total;
 		$this->save();	
 		return $this->score;	
 	}

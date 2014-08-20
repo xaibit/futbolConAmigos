@@ -140,7 +140,9 @@ class PredictionController extends Controller
 		$dataProvider=new CActiveDataProvider('Prediction', array(
 				'criteria'=>array(
 					'condition'=>'user=:user',
-					'params'=>array(':user'=>Yii::app()->user->id)
+					'params'=>array(':user'=>Yii::app()->user->id),
+					'order'=>'matchRel.afaDate DESC',
+					'with'=>'matchRel'
 				) 
 			)
 		);
