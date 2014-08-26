@@ -1,0 +1,7 @@
+se podria dar puntos extras si acierta todas las preguntas del partido
+en el mismo listado de los partidos, mostrar el pronóstico nuestro (del user logueado)
+agregar un tipo de pregunta diferente: con números. Por ejemplo cuantas amarillas va a haber en el partido. Ahora solo puedo hacerlo por rangos.
+
+
+
+
