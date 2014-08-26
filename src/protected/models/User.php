@@ -174,4 +174,15 @@ class User extends CActiveRecord
 		$this->save();	
 		return $this->score;	
 	}
+	
+	public function getPointsByDate($afaDate)
+	{
+		$predictions = Prediction::model()->with('matchRel')->findAll('t.user='.$this->idUser.' AND matchRel.afaDate=' . $afaDate);
+		$total = 0;
+		 
+		foreach ($predictions as $prediction) {			
+			$total += $prediction->calculatePoints();								
+		}			
+		return $total;
+	}
 }
