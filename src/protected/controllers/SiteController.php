@@ -102,7 +102,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				$this->redirect(array('match/index'));
+				$this->redirect(array('site/dashboard'));
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -182,4 +182,24 @@ class SiteController extends Controller
 		}
 		$this->render('mail',array('model'=>$model));
 	}
+	public function actionDashboard()
+	{
+		$user = User::model()->findByPk(Yii::app()->user->id);		
+		
+		$mygroups=new CActiveDataProvider('Group', array(
+				'criteria'=>array(
+						'condition'=>'EXISTS (SELECT 1 FROM usergroup WHERE user=:user AND adminPending=0 AND userPending=0 AND usergroup.group = t.idGroup) OR userAdmin=:user',
+						'params'=>array(':user'=>isset($user) ? $user->idUser : 0),
+						'order'=>'name ASC'
+				)
+		));
+		
+		$competitions=Competition::model()->findAll();
+			
+		$this->render('dashboard', array(
+				'user' => $user,
+				'dataProvider' => $mygroups,
+				'competitions' => $competitions
+		));
+	}		
 }

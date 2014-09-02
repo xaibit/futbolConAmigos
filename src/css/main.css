@@ -17,7 +17,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-  background:url(../../images/fondo.jpg) repeat;
+  background:url(../images/fondo.jpg) repeat;
 }
 .footer {
   position: absolute;
@@ -98,3 +98,14 @@ form {
     width: 49%;
 	font-weight: bold;
 }*/
+.tab-content.dashboard {
+	background-color: #fff;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 0 0 5px;
+}
+.group .dashboard {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
